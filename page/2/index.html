@@ -154,6 +154,79 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jwlee07.github.io/2020/04/23/labelCount-viewChangeColor-project/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JWBlog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/23/labelCount-viewChangeColor-project/" class="post-title-link" itemprop="url">labelCount/viewChangeColor-project</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-04-23 19:29:58 / Modified: 19:32:40" itemprop="dateCreated datePublished" datetime="2020-04-23T19:29:58+09:00">2020-04-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/project/" itemprop="url" rel="index"><span itemprop="name">project</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="문제-1"><a href="#문제-1" class="headerlink" title="문제 1"></a>문제 1</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">blue 버튼 또는 red 버튼을 누르면 view 의 색(빨강,파랑) 변경하기</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> changeView: <span class="type">UIView!</span></span><br><span class="line">    <span class="keyword">let</span> blueButton = <span class="type">UIButton</span>()</span><br><span class="line">    <span class="keyword">let</span> redButtion = <span class="type">UIButton</span>()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line"></span><br><span class="line">        redButtion.frame = <span class="type">CGRect</span> (x: <span class="number">50</span>, y: <span class="number">500</span>, width: <span class="number">100</span>, height: <span class="number">100</span>)</span><br><span class="line">        redButtion.setTitle(<span class="string">"red"</span>, <span class="keyword">for</span>: .normal)</span><br><span class="line">        redButtion.setTitleColor(.red, <span class="keyword">for</span>: .normal)</span><br><span class="line">        redButtion.backgroundColor = .white</span><br><span class="line">        view.addSubview(redButtion)</span><br><span class="line">        redButtion.addTarget(<span class="keyword">self</span>, action: #selector(red), <span class="keyword">for</span>: .touchUpInside)</span><br><span class="line"></span><br><span class="line">        blueButton.frame = <span class="type">CGRect</span> (x: <span class="number">200</span>, y: <span class="number">500</span>, width: <span class="number">100</span>, height: <span class="number">100</span>)</span><br><span class="line">        blueButton.setTitle(<span class="string">"blue"</span>, <span class="keyword">for</span>: .normal)</span><br><span class="line">        blueButton.setTitleColor(.blue, <span class="keyword">for</span>: .normal)</span><br><span class="line">        blueButton.backgroundColor = .white</span><br><span class="line">        view.addSubview(blueButton)</span><br><span class="line">        blueButton.addTarget(<span class="keyword">self</span>, action: #selector(blue), <span class="keyword">for</span>: .touchUpInside)</span><br><span class="line"></span><br><span class="line">        changeView.frame = <span class="type">CGRect</span> (x: <span class="number">100</span>, y: <span class="number">200</span>, width: <span class="number">200</span>, height: <span class="number">100</span>)</span><br><span class="line">        changeView.backgroundColor = .black</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@objc</span> <span class="function"><span class="keyword">func</span> <span class="title">blue</span> <span class="params">(<span class="number">_</span> sender: UIButton)</span></span> &#123;</span><br><span class="line">        changeView.backgroundColor = .blue</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@objc</span> <span class="function"><span class="keyword">func</span> <span class="title">red</span> <span class="params">(<span class="number">_</span> sender: UIButton)</span></span> &#123;</span><br><span class="line">        changeView.backgroundColor = .red</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="문제2"><a href="#문제2" class="headerlink" title="문제2"></a>문제2</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. 증가버튼 또는 감소버튼 누를 때마다 Label(숫자)의 값이 증가&#x2F;감소 변경하기</span><br><span class="line">2. 숫자가 증가할 때는 label의 텍스트 색을 파란색, 감소할 때는 빨간색으로 변경</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> labelCount = <span class="number">0</span></span><br><span class="line">    <span class="keyword">let</span> label = <span class="type">UILabel</span>()</span><br><span class="line">    <span class="keyword">let</span> increaseButton = <span class="type">UIButton</span>()</span><br><span class="line">    <span class="keyword">let</span> decreaseButton = <span class="type">UIButton</span>()</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line">        increaseButton.frame = <span class="type">CGRect</span> (x: <span class="number">50</span>, y: <span class="number">500</span>, width: <span class="number">100</span>, height: <span class="number">100</span>)</span><br><span class="line">        increaseButton.setTitle(<span class="string">"증가"</span>, <span class="keyword">for</span>: .normal)</span><br><span class="line">        increaseButton.backgroundColor = .blue</span><br><span class="line">        view.addSubview(increaseButton)</span><br><span class="line">        increaseButton.addTarget(<span class="keyword">self</span>, action: #selector(increase), <span class="keyword">for</span>: .touchUpInside)</span><br><span class="line"></span><br><span class="line">        decreaseButton.frame = <span class="type">CGRect</span> (x: <span class="number">250</span>, y: <span class="number">500</span>, width: <span class="number">100</span>, height: <span class="number">100</span>)</span><br><span class="line">        decreaseButton.setTitle(<span class="string">"감소"</span>, <span class="keyword">for</span>: .normal)</span><br><span class="line">        decreaseButton.backgroundColor = .red</span><br><span class="line">        view.addSubview(decreaseButton)</span><br><span class="line">        decreaseButton.addTarget(<span class="keyword">self</span>, action: #selector(decrease), <span class="keyword">for</span>: .touchUpInside)</span><br><span class="line"></span><br><span class="line">        label.frame = <span class="type">CGRect</span> (x: <span class="number">200</span>, y: <span class="number">100</span>, width: <span class="number">200</span>, height: <span class="number">200</span>)</span><br><span class="line">        label.font = <span class="type">UIFont</span>.systemFont(ofSize: <span class="number">30</span>)</span><br><span class="line">        label.text = <span class="string">"1"</span></span><br><span class="line">        label.textColor = .black</span><br><span class="line">        view.addSubview(label)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@objc</span> <span class="function"><span class="keyword">func</span> <span class="title">increase</span> <span class="params">(<span class="number">_</span> sender: UIButton)</span></span> &#123;</span><br><span class="line">            labelCount += <span class="number">1</span></span><br><span class="line">            label.text = <span class="type">String</span>(labelCount)</span><br><span class="line">            label.textColor = .blue</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@objc</span> <span class="function"><span class="keyword">func</span> <span class="title">decrease</span> <span class="params">(<span class="number">_</span> sender: UIButton)</span></span> &#123;</span><br><span class="line">            labelCount -= <span class="number">1</span></span><br><span class="line">            label.text = <span class="type">String</span>(labelCount)</span><br><span class="line">            label.textColor = .red</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://jwlee07.github.io/2020/04/21/Class-inheritance-OOP-property-swiftGrammar/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1020,108 +1093,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://jwlee07.github.io/2020/04/16/Optionals-Enum-swiftGrammar/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JWBlog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/16/Optionals-Enum-swiftGrammar/" class="post-title-link" itemprop="url">Optionals/Enum-swiftGrammar</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-04-16 21:04:46 / Modified: 21:05:29" itemprop="dateCreated datePublished" datetime="2020-04-16T21:04:46+09:00">2020-04-16</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/swiftGrammar/" itemprop="url" rel="index"><span itemprop="name">swiftGrammar</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Optionals"><a href="#Optionals" class="headerlink" title="Optionals"></a>Optionals</h2><h4 id="Type-Declaration"><a href="#Type-Declaration" class="headerlink" title="Type Declaration"></a>Type Declaration</h4><ul>
-<li>값이 없을 수 있는 상황에 사용</li>
-<li>2가지 경우의 수<ul>
-<li>값이 없음</li>
-<li>값이 있음, 접근을 위헤 옵셔널 unwrap 가능</li>
-</ul>
-</li>
-<li>Optional -&gt; NonOptional (X)</li>
-<li>Optional &lt;- NonOptional (O)<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> possibleNumber = <span class="string">"123"</span> -&gt; <span class="number">123</span></span><br><span class="line"><span class="keyword">var</span> convertedNumber = <span class="type">Int</span>(possibleNumber) -&gt; <span class="literal">nil</span></span><br><span class="line">type(of: convertedNumber) -&gt; <span class="type">Optional</span>&lt;<span class="type">Int</span>&gt;.<span class="type">Type</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> &lt;variable name&gt;: &lt;<span class="type">Type?</span>&gt;</span><br><span class="line"> <span class="keyword">var</span> &lt;variable name&gt;: &lt;<span class="type">Optional</span>&lt;<span class="type">Type</span>&gt;&gt;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h4 id="UnWrapping"><a href="#UnWrapping" class="headerlink" title="UnWrapping"></a>UnWrapping</h4><ul>
-<li><p>Forced</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> convertedNumber != <span class="literal">nil</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Binding</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> &lt;nonOptional&gt; = &lt;<span class="type">OptionalExpression</span>&gt; &#123;</span><br><span class="line">  &lt;<span class="type">Code</span>&gt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">while</span> <span class="keyword">let</span> &lt;nonOptional&gt; = &lt;<span class="type">OptionalExpression</span>&gt; &#123;</span><br><span class="line">  &lt;<span class="type">Code</span>&gt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">guard</span> <span class="keyword">let</span> &lt;nonOptional&gt; = &lt;<span class="type">OptionalExpression</span>&gt; <span class="keyword">else</span> &#123;</span><br><span class="line">  &lt;<span class="type">Code</span>&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="Enum"><a href="#Enum" class="headerlink" title="Enum"></a>Enum</h2><h4 id="Type-Declaration-1"><a href="#Type-Declaration-1" class="headerlink" title="Type Declaration"></a>Type Declaration</h4><ul>
-<li>연관된 값의 그룹에 공통 타입을 정의 한 후 해당 값들 사용</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">enum CompassPoint &#123;</span><br><span class="line">  case north</span><br><span class="line">  case south</span><br><span class="line">  case east</span><br><span class="line">  case west</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="Raw-Value"><a href="#Raw-Value" class="headerlink" title="Raw Value"></a>Raw Value</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Gender</span>: <span class="title">String</span> </span>&#123;</span><br><span class="line">  <span class="keyword">case</span> male = <span class="string">"남자"</span>, female = <span class="string">"여자"</span>, other = <span class="string">"기타"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">Gender</span>.male -&gt; male</span><br><span class="line"><span class="type">Gender</span>.male.rawValue -&gt; <span class="string">"남자"</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">WeekdayAgain</span>: <span class="title">Int</span> </span>&#123;</span><br><span class="line">  <span class="keyword">case</span> sunday = <span class="number">5</span>, monday, tuesday, wednesday, thursday, friday, saturday</span><br><span class="line"><span class="comment">//  case sunday, monday = 100, tuesday = 101, wednesday, thursday, friday, saturday</span></span><br><span class="line"><span class="comment">//  case sunday = 1, monday = 1, tuesday = 2, wednesday, thursday, friday, saturday</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">WeekdayAgain</span>.sunday -&gt; sunday</span><br><span class="line"><span class="type">WeekdayAgain</span>.sunday.rawValue -&gt; <span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="type">WeekdayAgain</span>.wednesday -&gt; wednesday</span><br><span class="line"><span class="type">WeekdayAgain</span>.wednesday.rawValue -&gt; <span class="number">8</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="Nested"><a href="#Nested" class="headerlink" title="Nested"></a>Nested</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Device</span>: <span class="title">String</span> </span>&#123;</span><br><span class="line">  <span class="keyword">case</span> iPhone, iPad, tv, watch</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">printType</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</span><br><span class="line">    <span class="keyword">case</span> .iPad, .iPhone, .tv:</span><br><span class="line">      <span class="built_in">print</span>(<span class="string">"device :"</span>, <span class="keyword">self</span>)</span><br><span class="line">    <span class="keyword">case</span> .watch:</span><br><span class="line">      <span class="built_in">print</span>(<span class="string">"apple Watch"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> iPhone = <span class="type">Device</span>.iPhone -&gt; iPhone</span><br><span class="line">iPhone.printType() -&gt; iPhone</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Wearable</span> </span>&#123;</span><br><span class="line">  <span class="class"><span class="keyword">enum</span> <span class="title">Weight</span>: <span class="title">Int</span> </span>&#123;</span><br><span class="line">    <span class="keyword">case</span> light = <span class="number">1</span></span><br><span class="line">    <span class="keyword">case</span> heavy = <span class="number">3</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">case</span> helmet(weight: <span class="type">Weight</span>)</span><br><span class="line">  <span class="keyword">case</span> boots</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">info</span><span class="params">()</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">    <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</span><br><span class="line">    <span class="keyword">case</span> .helmet(<span class="keyword">let</span> weight):</span><br><span class="line">      <span class="keyword">return</span> weight.rawValue * <span class="number">2</span></span><br><span class="line">    <span class="keyword">case</span> .boots:</span><br><span class="line">      <span class="keyword">return</span> <span class="number">3</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> boots = <span class="type">Wearable</span>.boots</span><br><span class="line">boots.info()</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> woodenHelmet = <span class="type">Wearable</span>.helmet(weight: .light)</span><br><span class="line">woodenHelmet.info() -&gt; <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> ironHelmet = <span class="type">Wearable</span>.helmet(weight: .heavy)</span><br><span class="line">ironHelmet.info() -&gt; <span class="number">6</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1186,7 +1161,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
