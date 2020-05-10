@@ -154,6 +154,122 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jwlee07.github.io/2020/05/10/userDefault-project/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JWBlog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/10/userDefault-project/" class="post-title-link" itemprop="url">userDefault-project</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-05-10 19:02:34 / Modified: 19:03:17" itemprop="dateCreated datePublished" datetime="2020-05-10T19:02:34+09:00">2020-05-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/project/" itemprop="url" rel="index"><span itemprop="name">project</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="문제-1"><a href="#문제-1" class="headerlink" title="문제 1"></a>문제 1</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Userdefaults를 사용하여 alarm switch, datePicker의 값 저장</span><br><span class="line">Alarm Switch, DatePicker의 값 불러오기</span><br><span class="line">Switch와 DatePicker에 불러온 값 세팅</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@IBOutlet</span> <span class="keyword">private</span> <span class="keyword">weak</span> <span class="keyword">var</span> datePicker: <span class="type">UIDatePicker!</span></span><br><span class="line">  <span class="meta">@IBOutlet</span> <span class="keyword">private</span> <span class="keyword">weak</span> <span class="keyword">var</span> alertSwitch: <span class="type">UISwitch!</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> userDefault = <span class="type">UserDefaults</span>.standard</span><br><span class="line"></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">Key</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">let</span> today = <span class="string">"today"</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">let</span> alarmSw = <span class="string">"alarmSwitch"</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">saveData</span><span class="params">(<span class="number">_</span> button: UIButton)</span></span> &#123;</span><br><span class="line"></span><br><span class="line">    userDefault.<span class="keyword">set</span>(datePicker.date, forKey: <span class="type">Key</span>.today)</span><br><span class="line">    userDefault.<span class="keyword">set</span>(alertSwitch.isOn, forKey: <span class="type">Key</span>.alarmSw)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">loadData</span><span class="params">(<span class="number">_</span> button: UIButton)</span></span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> alertRes = userDefault.bool(forKey: <span class="type">Key</span>.alarmSw)</span><br><span class="line">    <span class="keyword">let</span> dateRes = (userDefault.object(forKey: <span class="type">Key</span>.today) <span class="keyword">as</span>? <span class="type">Date</span>) ?? <span class="type">Date</span>()</span><br><span class="line">    alertSwitch.setOn(alertRes, animated: <span class="literal">true</span>)</span><br><span class="line">    datePicker.setDate(dateRes, animated: <span class="literal">true</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="문제-2"><a href="#문제-2" class="headerlink" title="문제 2"></a>문제 2</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">switch 결과 값을 userDefault에 저장</span><br><span class="line">결과 값이 true, false에 따라 dog, cat image를 출력</span><br></pre></td></tr></table></figure>
+
+<pre><code class="swift"><span class="keyword">import</span> UIKit
+
+<span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span> </span>{
+  <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> imageVIew: <span class="type">UIImageView!</span>
+  <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> switchButton: <span class="type">UISwitch!</span>
+
+  <span class="keyword">let</span> userDefault = <span class="type">UserDefaults</span>.standard
+  <span class="keyword">let</span> dogImage = <span class="type">UIImage</span>(named: <span class="string">"dog.jpg"</span>)
+  <span class="keyword">let</span> catImage = <span class="type">UIImage</span>(named: <span class="string">"cat.jpg"</span>)
+  <span class="keyword">let</span> imageInit = <span class="type">UIImage</span>()
+
+  <span class="class"><span class="keyword">struct</span> <span class="title">Key</span> </span>{
+    <span class="keyword">static</span> <span class="keyword">let</span> switchButton = <span class="string">"switchButton"</span>
+  }
+
+  <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> {
+    <span class="keyword">super</span>.viewDidLoad()
+
+    <span class="keyword">let</span> switchCheck = userDefault.bool(forKey: <span class="type">Key</span>.switchButton)
+    switchButton.setOn(switchCheck, animated: <span class="literal">true</span>)
+
+    <span class="built_in">print</span> (switchCheck)
+
+    <span class="keyword">if</span> switchCheck == <span class="literal">true</span> {
+      imageVIew.image = dogImage
+    } <span class="keyword">else</span> {
+      imageVIew.image = catImage
+    }
+  }
+  <span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">actionSwitchButton</span><span class="params">(<span class="number">_</span> sender: UISwitch)</span></span> {
+
+    userDefault.<span class="keyword">set</span>(switchButton.isOn, forKey: <span class="type">Key</span>.switchButton)
+    <span class="keyword">let</span> switchCheck = userDefault.bool(forKey: <span class="type">Key</span>.switchButton)
+    switchButton.setOn(switchCheck, animated: <span class="literal">true</span>)
+
+    <span class="keyword">if</span> switchCheck == <span class="literal">true</span> {
+      imageVIew.image = dogImage
+    } <span class="keyword">else</span> {
+      imageVIew.image = catImage
+    }
+  }
+}
+``</code></pre>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://jwlee07.github.io/2020/05/07/ChangeImage-LabelCount-project/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -818,76 +934,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://jwlee07.github.io/2020/04/26/UI-segmented-label-view-project/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JWBlog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/26/UI-segmented-label-view-project/" class="post-title-link" itemprop="url">UI_segmented,label,view-project</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-04-26 21:27:44 / Modified: 21:29:03" itemprop="dateCreated datePublished" datetime="2020-04-26T21:27:44+09:00">2020-04-26</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/playground/" itemprop="url" rel="index"><span itemprop="name">playground</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="문제-1"><a href="#문제-1" class="headerlink" title="문제 1"></a>문제 1</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">segmented를 사용하여 label, view의 상태를 변경하라.</span><br><span class="line">1. segmented 배열을 사용하여 red, blue, green 항목 생성</span><br><span class="line">2. segmented의 각 항목을 선택 시 label, view 변경</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> colorLabel = <span class="type">UILabel</span>()</span><br><span class="line">    <span class="keyword">let</span> colorView = <span class="type">UIView</span>()</span><br><span class="line">    <span class="keyword">let</span> colorSeg = <span class="type">UISegmentedControl</span>(items: [<span class="string">"red"</span>,<span class="string">"blue"</span>,<span class="string">"green"</span>])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">loadView</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">let</span> view = <span class="type">UIView</span>()</span><br><span class="line">        view.frame.size = <span class="type">CGSize</span> (width: <span class="number">414</span>, height: <span class="number">896</span>)</span><br><span class="line">        view.backgroundColor = .white</span><br><span class="line">        <span class="keyword">self</span>.view = view</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line">        <span class="keyword">let</span> colorView = createView()</span><br><span class="line">        <span class="keyword">let</span> colorLabel = createLabel()</span><br><span class="line">        <span class="keyword">let</span> colorSeg = createSeg()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">createLabel</span> <span class="params">()</span></span> &#123;</span><br><span class="line">        colorLabel.text = <span class="string">"color"</span></span><br><span class="line">        colorLabel.frame = <span class="type">CGRect</span> (x: view.center.x, y: view.center.y, width: <span class="number">100</span>, height: <span class="number">100</span>)</span><br><span class="line">        colorLabel.textColor = .black</span><br><span class="line">        view.addSubview(colorLabel)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">createView</span> <span class="params">()</span></span> &#123;</span><br><span class="line">        colorView.frame = <span class="type">CGRect</span> (x: (view.center.x)/<span class="number">3</span>, y: view.center.y, width: <span class="number">300</span>, height: <span class="number">200</span>)</span><br><span class="line">        colorView.backgroundColor = .gray</span><br><span class="line">        colorView.tintColor = .black</span><br><span class="line">        <span class="keyword">super</span>.view.addSubview(colorView)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">createSeg</span> <span class="params">()</span></span> &#123;</span><br><span class="line">        colorSeg.frame = <span class="type">CGRect</span> (x: (view.center.x)/<span class="number">3</span>, y: (view.center.y) - <span class="number">300</span>, width: <span class="number">300</span>, height: <span class="number">50</span>)</span><br><span class="line">        colorSeg.backgroundColor = .gray</span><br><span class="line">        colorSeg.tintColor = .white</span><br><span class="line">        colorSeg.addTarget(<span class="keyword">self</span>, action: #selector(changeColor), <span class="keyword">for</span>: .valueChanged)</span><br><span class="line">        view.addSubview(colorSeg)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@objc</span> <span class="function"><span class="keyword">func</span> <span class="title">changeColor</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> colorSeg.selectedSegmentIndex &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">        colorLabel.text = <span class="string">"red"</span></span><br><span class="line">        colorView.backgroundColor = .red</span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">        colorLabel.text = <span class="string">"blue"</span></span><br><span class="line">        colorView.backgroundColor = .blue</span><br><span class="line">        <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">        colorLabel.text = <span class="string">"green"</span></span><br><span class="line">        colorView.backgroundColor = .green</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -956,7 +1002,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

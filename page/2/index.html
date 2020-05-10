@@ -154,6 +154,76 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jwlee07.github.io/2020/04/26/UI-segmented-label-view-project/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JWBlog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/26/UI-segmented-label-view-project/" class="post-title-link" itemprop="url">UI_segmented,label,view-project</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-04-26 21:27:44 / Modified: 21:29:03" itemprop="dateCreated datePublished" datetime="2020-04-26T21:27:44+09:00">2020-04-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/playground/" itemprop="url" rel="index"><span itemprop="name">playground</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="문제-1"><a href="#문제-1" class="headerlink" title="문제 1"></a>문제 1</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">segmented를 사용하여 label, view의 상태를 변경하라.</span><br><span class="line">1. segmented 배열을 사용하여 red, blue, green 항목 생성</span><br><span class="line">2. segmented의 각 항목을 선택 시 label, view 변경</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> colorLabel = <span class="type">UILabel</span>()</span><br><span class="line">    <span class="keyword">let</span> colorView = <span class="type">UIView</span>()</span><br><span class="line">    <span class="keyword">let</span> colorSeg = <span class="type">UISegmentedControl</span>(items: [<span class="string">"red"</span>,<span class="string">"blue"</span>,<span class="string">"green"</span>])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">loadView</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">let</span> view = <span class="type">UIView</span>()</span><br><span class="line">        view.frame.size = <span class="type">CGSize</span> (width: <span class="number">414</span>, height: <span class="number">896</span>)</span><br><span class="line">        view.backgroundColor = .white</span><br><span class="line">        <span class="keyword">self</span>.view = view</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line">        <span class="keyword">let</span> colorView = createView()</span><br><span class="line">        <span class="keyword">let</span> colorLabel = createLabel()</span><br><span class="line">        <span class="keyword">let</span> colorSeg = createSeg()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">createLabel</span> <span class="params">()</span></span> &#123;</span><br><span class="line">        colorLabel.text = <span class="string">"color"</span></span><br><span class="line">        colorLabel.frame = <span class="type">CGRect</span> (x: view.center.x, y: view.center.y, width: <span class="number">100</span>, height: <span class="number">100</span>)</span><br><span class="line">        colorLabel.textColor = .black</span><br><span class="line">        view.addSubview(colorLabel)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">createView</span> <span class="params">()</span></span> &#123;</span><br><span class="line">        colorView.frame = <span class="type">CGRect</span> (x: (view.center.x)/<span class="number">3</span>, y: view.center.y, width: <span class="number">300</span>, height: <span class="number">200</span>)</span><br><span class="line">        colorView.backgroundColor = .gray</span><br><span class="line">        colorView.tintColor = .black</span><br><span class="line">        <span class="keyword">super</span>.view.addSubview(colorView)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">createSeg</span> <span class="params">()</span></span> &#123;</span><br><span class="line">        colorSeg.frame = <span class="type">CGRect</span> (x: (view.center.x)/<span class="number">3</span>, y: (view.center.y) - <span class="number">300</span>, width: <span class="number">300</span>, height: <span class="number">50</span>)</span><br><span class="line">        colorSeg.backgroundColor = .gray</span><br><span class="line">        colorSeg.tintColor = .white</span><br><span class="line">        colorSeg.addTarget(<span class="keyword">self</span>, action: #selector(changeColor), <span class="keyword">for</span>: .valueChanged)</span><br><span class="line">        view.addSubview(colorSeg)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@objc</span> <span class="function"><span class="keyword">func</span> <span class="title">changeColor</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> colorSeg.selectedSegmentIndex &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">        colorLabel.text = <span class="string">"red"</span></span><br><span class="line">        colorView.backgroundColor = .red</span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">        colorLabel.text = <span class="string">"blue"</span></span><br><span class="line">        colorView.backgroundColor = .blue</span><br><span class="line">        <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">        colorLabel.text = <span class="string">"green"</span></span><br><span class="line">        colorView.backgroundColor = .green</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://jwlee07.github.io/2020/04/25/UI-label-switch-segment-project/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -902,90 +972,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://jwlee07.github.io/2020/04/19/200419-viewControllerGrammar/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JWBlog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/19/200419-viewControllerGrammar/" class="post-title-link" itemprop="url">200419-viewControllerGrammar</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-04-19 20:36:32 / Modified: 20:39:51" itemprop="dateCreated datePublished" datetime="2020-04-19T20:36:32+09:00">2020-04-19</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/viewControllerGrammar/" itemprop="url" rel="index"><span itemprop="name">viewControllerGrammar</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="View-Controller-LifeCycle"><a href="#View-Controller-LifeCycle" class="headerlink" title="View Controller LifeCycle"></a>View Controller LifeCycle</h2><ul>
-<li>View Controller가 생성, 화면에 나오고, 사라지고 하는 개념</li>
-</ul>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DetailViewController</span>: <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">awakeFromNib</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.awakeFromNib()</span><br><span class="line">        <span class="built_in">print</span> (<span class="string">"awakeFromNib"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line">        <span class="built_in">print</span> (<span class="string">"viewDidLoad"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewWillAppear</span><span class="params">(<span class="number">_</span> animated: Bool)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewWillAppear(animated)</span><br><span class="line">        <span class="built_in">print</span> (<span class="string">"viewWillAppear"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidAppear</span><span class="params">(<span class="number">_</span> animated: Bool)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewWillAppear(animated)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewWillDisappear</span><span class="params">(<span class="number">_</span> animated: Bool)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewWillDisappear(animated)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"viewWillDisappear"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidDisappear</span><span class="params">(<span class="number">_</span> animated: Bool)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidDisappear(animated)</span><br><span class="line">        <span class="built_in">print</span> (<span class="string">"viewDidDisappear"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">deinit</span> &#123;</span><br><span class="line">        <span class="built_in">print</span> (<span class="string">"deinit"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="Struct-VS-Class"><a href="#Struct-VS-Class" class="headerlink" title="Struct VS Class"></a>Struct VS Class</h2><ul>
-<li>데이터 구조 형태로 사용 시 Struct 형태가 시간 절약.  </li>
-</ul>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Test</span> <span class="title">Struct</span> </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> name: <span class="type">String</span></span><br><span class="line">	<span class="keyword">var</span> age: <span class="type">Int</span></span><br><span class="line">	<span class="keyword">init</span>(name: <span class="type">String</span>, age: <span class="type">Int</span>) &#123;</span><br><span class="line">		<span class="keyword">self</span>.name = name</span><br><span class="line">		<span class="keyword">self</span>.age = age</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> <span class="title">Class</span> </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> name: <span class="type">String</span></span><br><span class="line">	<span class="keyword">var</span> age: <span class="type">Int</span></span><br><span class="line">	<span class="keyword">init</span>(name: <span class="type">String</span>, age: <span class="type">Int</span>) &#123;</span><br><span class="line">		<span class="keyword">self</span>.name = name</span><br><span class="line">		<span class="keyword">self</span>.age = age</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line">	<span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">		<span class="keyword">super</span>.viewDidLoad()</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">var</span> testStruct: [<span class="type">TestStruct</span>] = []</span><br><span class="line">		<span class="keyword">var</span> testStruct: [<span class="type">TestClass</span>] = []</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">let</span> startTime = <span class="type">CFAbsoluteTimeGetCurrent</span>()</span><br><span class="line">		<span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span>..&lt;<span class="number">10000000</span> &#123;</span><br><span class="line">			testStruct.append(<span class="type">TestStruct</span>.<span class="keyword">init</span>(name:<span class="string">"aa"</span>, age:<span class="number">0</span>))</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">let</span> durationTime = <span class="type">CFAbsoluteTimeGetCurrent</span>() - startTime</span><br><span class="line">	</span><br><span class="line">			<span class="keyword">let</span> startTime = <span class="type">CFAbsoluteTimeGetCurrent</span>()</span><br><span class="line">		<span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span>..&lt;<span class="number">10000000</span> &#123;</span><br><span class="line">			testClass.append(<span class="type">TestClass</span>.<span class="keyword">init</span>(name:<span class="string">"aa"</span>, age:<span class="number">0</span>))</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">let</span> durationTime = <span class="type">CFAbsoluteTimeGetCurrent</span>() - startTime</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">// 결과</span></span><br><span class="line">durationTime <span class="class"><span class="keyword">struct</span> : 2.4948948</span></span><br><span class="line"><span class="class"><span class="title">durationTime</span> <span class="title">Class</span> : 3.5948948</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Unwind-Segue"><a href="#Unwind-Segue" class="headerlink" title="Unwind Segue"></a>Unwind Segue</h2><ul>
-<li>View간의 Button을 사용하여 이동 중 가고자 하는 곳에 다이렉트로 View 이동 가능</li>
-</ul>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">unwind</span><span class="params">(segue: UIStoryboardSegue)</span></span> &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1054,7 +1040,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
