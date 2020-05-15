@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jwlee07.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="문제 1123456781. width, height 속성을 가진 Rectangle 클래스 정의2. 생성자(초기화 메서드)에서 width, height 프로퍼티 값을 설정할 수 있도록 구현3. 사각형의 가로 세로 길이를 변경할 수 있는 메서드 구현4. 사각형 가로와 세로의 길이를 반환하는 메서드 구현5. 사각형의 넓이를 반환하는 메서드 구현6. 다음과 같은">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OOP_Class-playground">
+<meta property="og:url" content="https://jwlee07.github.io/2020/04/20/OOP-Class-playground/index.html">
+<meta property="og:site_name" content="JWBlog">
+<meta property="og:description" content="문제 1123456781. width, height 속성을 가진 Rectangle 클래스 정의2. 생성자(초기화 메서드)에서 width, height 프로퍼티 값을 설정할 수 있도록 구현3. 사각형의 가로 세로 길이를 변경할 수 있는 메서드 구현4. 사각형 가로와 세로의 길이를 반환하는 메서드 구현5. 사각형의 넓이를 반환하는 메서드 구현6. 다음과 같은">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-20T11:43:03.000Z">
+<meta property="article:modified_time" content="2020-04-20T11:43:38.580Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="playground">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://jwlee07.github.io/2020/04/20/OOP-Class-playground/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>OOP_Class-playground | JWBlog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">JWBlog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Study Diary</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jwlee07.github.io/2020/04/20/OOP-Class-playground/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JWBlog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          OOP_Class-playground
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-04-20 20:43:03 / Modified: 20:43:38" itemprop="dateCreated datePublished" datetime="2020-04-20T20:43:03+09:00">2020-04-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/playground/" itemprop="url" rel="index"><span itemprop="name">playground</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="문제-1"><a href="#문제-1" class="headerlink" title="문제 1"></a>문제 1</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1. width, height 속성을 가진 Rectangle 클래스 정의</span><br><span class="line">2. 생성자(초기화 메서드)에서 width, height 프로퍼티 값을 설정할 수 있도록 구현</span><br><span class="line">3. 사각형의 가로 세로 길이를 변경할 수 있는 메서드 구현</span><br><span class="line">4. 사각형 가로와 세로의 길이를 반환하는 메서드 구현</span><br><span class="line">5. 사각형의 넓이를 반환하는 메서드 구현</span><br><span class="line">6. 다음과 같은 속성을 지닌 인스턴스 생성</span><br><span class="line">- 직사각형 1개 속성: width &#x3D; 10, height &#x3D; 5</span><br><span class="line">- 정사각형 1개 속성: width &#x3D; 7, height &#x3D; 7</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> width: <span class="type">Int</span></span><br><span class="line">    <span class="keyword">var</span> height: <span class="type">Int</span></span><br><span class="line">    <span class="keyword">init</span>() &#123;</span><br><span class="line">        width = <span class="number">0</span></span><br><span class="line">        height = <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">lengthChange</span> <span class="params">(widthIn: Int, heightIn: Int)</span></span> &#123;</span><br><span class="line">        width = widthIn</span><br><span class="line">        height = heightIn</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">lengthReturn</span> <span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"가로의 길이 : \(width) 세로의 길이 : \(height)"</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">lengthArea</span> <span class="params">()</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> width * height</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> rectangle1 = <span class="type">Rectangle</span>()</span><br><span class="line">rectangle1.width = <span class="number">10</span></span><br><span class="line">rectangle1.height = <span class="number">5</span></span><br><span class="line">rectangle1.lengthChange(widthIn: <span class="number">5</span>, heightIn: <span class="number">7</span>)</span><br><span class="line">rectangle1.width</span><br><span class="line">rectangle1.height</span><br><span class="line">rectangle1.lengthReturn()</span><br><span class="line">rectangle1.lengthArea()</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> rectangle2 = <span class="type">Rectangle</span>()</span><br><span class="line">rectangle2.width = <span class="number">7</span></span><br><span class="line">rectangle2.height = <span class="number">7</span></span><br><span class="line">rectangle2.lengthChange(widthIn: <span class="number">5</span>, heightIn: <span class="number">9</span>)</span><br><span class="line">rectangle2.width</span><br><span class="line">rectangle2.height</span><br><span class="line">rectangle2.lengthReturn()</span><br><span class="line">rectangle2.lengthArea()</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="문제-2"><a href="#문제-2" class="headerlink" title="문제 2"></a>문제 2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. 채널 정보, Volume 값, 전원 설정여부를 속성으로 가지는 클래스 정의</span><br><span class="line">2. TV 의 현재 채널 및 볼륨을 변경 가능한 메서드 구현</span><br><span class="line">3. TV 의 현재 채널 및 볼륨을 확인할 수 있는 메서드 구현</span><br><span class="line">4. TV 전원이 꺼져있을 때는 채널과 볼륨 변경을 할 수 없도록 구현</span><br><span class="line">   (직접 프로퍼티에 값을 설정할 수 없다고 가정)</span><br><span class="line">5. 채널과 볼륨 정보를 확인했을 때 TV 전원이 꺼져있으면 -1 이 반환되도록 구현</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TV</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> volume: <span class="type">Int</span></span><br><span class="line">    <span class="keyword">var</span> power: <span class="type">Int</span></span><br><span class="line">    <span class="keyword">var</span> channel: <span class="type">Int</span></span><br><span class="line">    <span class="keyword">init</span> () &#123;</span><br><span class="line">        volume = <span class="number">0</span></span><br><span class="line">        power = <span class="number">0</span></span><br><span class="line">        channel = <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">channelVolumeChange</span> <span class="params">(channelIn: Int, volumeIn: Int)</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> !(power == <span class="number">0</span>) &#123;</span><br><span class="line">            channel = channelIn</span><br><span class="line">            volume = volumeIn</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">channelVolumeCheck</span> <span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> !(power == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"현재 채널 : \(channel), 현재 볼륨 : \(volume)"</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"-1"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> tv = <span class="type">TV</span>()</span><br><span class="line">tv.volume = <span class="number">10</span></span><br><span class="line">tv.channel = <span class="number">15</span></span><br><span class="line">tv.power = <span class="number">1</span></span><br><span class="line">tv.channelVolumeChange(channelIn: <span class="number">5</span>, volumeIn: <span class="number">8</span>)</span><br><span class="line">tv.volume</span><br><span class="line">tv.channel</span><br><span class="line">tv.channelVolumeCheck()</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="문제-3"><a href="#문제-3" class="headerlink" title="문제 3"></a>문제 3</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. 사각형의 길이를 설정하는 초기화 메서드, 둘레와 넓이값을 구하는 메서드 구현</span><br><span class="line">2. 원의 반지름을 설정하는 초기화 메서드, 둘레와 넓이값을 구하는 메서드 구현</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Square</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> width: <span class="type">Int</span></span><br><span class="line">    <span class="keyword">var</span> heigh: <span class="type">Int</span></span><br><span class="line">    <span class="keyword">init</span> () &#123;</span><br><span class="line">        width = <span class="number">0</span></span><br><span class="line">        heigh = <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">squareLength</span> <span class="params">(widthIn: Int, heighIn: Int)</span></span> &#123;</span><br><span class="line">        width = widthIn</span><br><span class="line">        heigh = heighIn</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">squareRound</span> <span class="params">()</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> (width + heigh) * <span class="number">2</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">squareArea</span> <span class="params">()</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> width * heigh</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> squre = <span class="type">Square</span>()</span><br><span class="line">squre.width</span><br><span class="line">squre.heigh</span><br><span class="line">squre.squareLength(widthIn: <span class="number">3</span>, heighIn: <span class="number">5</span>)</span><br><span class="line">squre.squareRound()</span><br><span class="line">squre.squareArea()</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Circle</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> radius: <span class="type">Double</span></span><br><span class="line">    <span class="keyword">var</span> pi: <span class="type">Double</span></span><br><span class="line">    <span class="keyword">init</span> () &#123;</span><br><span class="line">        radius = <span class="number">0</span></span><br><span class="line">        pi = <span class="number">3.14</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">circleRadius</span> <span class="params">(RadiusIn: Double)</span></span> &#123;</span><br><span class="line">        radius = <span class="type">RadiusIn</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">circlCircumference</span> <span class="params">()</span></span> -&gt; <span class="type">Double</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> radius * <span class="number">2</span> * pi</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">circlArea</span> <span class="params">()</span></span> -&gt; <span class="type">Double</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> radius * radius * pi</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> circle = <span class="type">Circle</span>()</span><br><span class="line">circle.radius</span><br><span class="line">circle.pi</span><br><span class="line">circle.circleRadius(<span class="type">RadiusIn</span>: <span class="number">8</span>)</span><br><span class="line">circle.circlCircumference()</span><br><span class="line">circle.circlArea()</span><br></pre></td></tr></table></figure>
+
+<h4 id="문제-4-같은-속성-Property-과-행위-Method-를-가지는-클래스-만들어보기"><a href="#문제-4-같은-속성-Property-과-행위-Method-를-가지는-클래스-만들어보기" class="headerlink" title="문제 4 (같은 속성(Property)과 행위(Method)를 가지는 클래스 만들어보기)"></a>문제 4 (같은 속성(Property)과 행위(Method)를 가지는 클래스 만들어보기)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">** 강아지 (Dog)</span><br><span class="line">- 속성: 이름, 나이, 몸무게, 견종</span><br><span class="line">- 행위: 짖기, 먹기</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> name: <span class="type">String</span></span><br><span class="line">    <span class="keyword">var</span> age: <span class="type">Int</span></span><br><span class="line">    <span class="keyword">var</span> weight: <span class="type">Int</span></span><br><span class="line">    <span class="keyword">var</span> kind: <span class="type">String</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">init</span> () &#123;</span><br><span class="line">        name = <span class="string">"pupu"</span></span><br><span class="line">        age = <span class="number">3</span></span><br><span class="line">        weight = <span class="number">7</span></span><br><span class="line">        kind = <span class="string">"maltese"</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">bark</span> <span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"bark!!"</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">eat</span> <span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"eat !"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">** 학생 (Student)</span><br><span class="line">- 속성: 이름, 나이, 학교명, 학년</span><br><span class="line">- 행위: 공부하기, 먹기, 잠자기</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> name: <span class="type">String</span></span><br><span class="line">    <span class="keyword">var</span> age: <span class="type">Int</span></span><br><span class="line">    <span class="keyword">var</span> schoolName: <span class="type">String</span></span><br><span class="line">    <span class="keyword">var</span> year: <span class="type">Int</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">init</span>() &#123;</span><br><span class="line">        name = <span class="string">"jwlee"</span></span><br><span class="line">        age = <span class="number">26</span></span><br><span class="line">        schoolName = <span class="string">"fastcampus"</span></span><br><span class="line">        year = <span class="number">3</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">study</span> <span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Study"</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">eat</span> <span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"eat"</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">sleep</span> <span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"sleep"</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">** 아이폰(IPhone)</span><br><span class="line">- 속성: 기기명, 가격, faceID 기능 여부(Bool)</span><br><span class="line">- 행위: 전화 걸기, 문자 전송</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IPhone</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> apparatusName: <span class="type">String</span></span><br><span class="line">    <span class="keyword">var</span> price: <span class="type">Int</span></span><br><span class="line">    <span class="keyword">var</span> faceID: <span class="type">Bool</span></span><br><span class="line">    <span class="keyword">init</span>() &#123;</span><br><span class="line">        apparatusName = <span class="string">"iPhone7"</span></span><br><span class="line">        price = <span class="number">30</span></span><br><span class="line">        faceID = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">call</span> <span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"call"</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">face</span> <span class="params">()</span></span> -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">** 커피(Coffee)</span><br><span class="line">- 속성: 이름, 가격, 원두 원산지</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Coffee</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> name: <span class="type">String</span></span><br><span class="line">    <span class="keyword">var</span> price: <span class="type">Int</span></span><br><span class="line">    <span class="keyword">var</span> country: <span class="type">String</span></span><br><span class="line">    <span class="keyword">init</span> () &#123;</span><br><span class="line">        name = <span class="string">"kanu"</span></span><br><span class="line">        price = <span class="number">3000</span></span><br><span class="line">        country = <span class="string">"korea"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="문제-5-계산기"><a href="#문제-5-계산기" class="headerlink" title="문제 5 (계산기)"></a>문제 5 (계산기)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">계산기 클래스를 만들고 다음과 같은 기능을 가진 Property 와 Method 정의해보기</span><br><span class="line">** 계산기 (Calculator)</span><br><span class="line">- 속성: 현재 값</span><br><span class="line">- 행위: 더하기, 빼기, 나누기, 곱하기, 값 초기화</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Calculator</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> value: <span class="type">Int</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">init</span> () &#123;</span><br><span class="line">        value = <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">add</span> <span class="params">(<span class="number">_</span> valueIn: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">        value = value + valueIn</span><br><span class="line">        <span class="keyword">return</span> value</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">subtract</span> <span class="params">(<span class="number">_</span> valueIn: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">        value = value - valueIn</span><br><span class="line">        <span class="keyword">return</span> value</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">multiply</span> <span class="params">(<span class="number">_</span> valueIn: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">        value = value * valueIn</span><br><span class="line">        <span class="keyword">return</span> value</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">divide</span> <span class="params">(<span class="number">_</span> valueIn: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">        value = value / valueIn</span><br><span class="line">        <span class="keyword">return</span> value</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">reset</span> <span class="params">()</span></span> &#123;</span><br><span class="line">        value = <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> calculator = <span class="type">Calculator</span>() <span class="comment">// 객체생성</span></span><br><span class="line">calculator.value  <span class="comment">// 0</span></span><br><span class="line">calculator.add(<span class="number">10</span>)    <span class="comment">// 10</span></span><br><span class="line">calculator.add(<span class="number">5</span>)     <span class="comment">// 15</span></span><br><span class="line">calculator.subtract(<span class="number">9</span>)  <span class="comment">// 6</span></span><br><span class="line">calculator.subtract(<span class="number">10</span>) <span class="comment">// -4</span></span><br><span class="line">calculator.multiply(<span class="number">4</span>)   <span class="comment">// -16</span></span><br><span class="line">calculator.multiply(-<span class="number">10</span>) <span class="comment">// 160</span></span><br><span class="line">calculator.divide(<span class="number">10</span>)   <span class="comment">// 16</span></span><br><span class="line">calculator.reset()      <span class="comment">// 0</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/playground/" rel="tag"># playground</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/20/OOP-Class-swiftGrammar/" rel="prev" title="OOP_Class-swiftGrammar">
+      <i class="fa fa-chevron-left"></i> OOP_Class-swiftGrammar
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/04/21/Class-inheritance-playground/" rel="next" title="Class_inheritance-playground">
+      Class_inheritance-playground <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#문제-1"><span class="nav-number">1.</span> <span class="nav-text">문제 1</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#문제-2"><span class="nav-number"></span> <span class="nav-text">문제 2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#문제-3"><span class="nav-number">1.</span> <span class="nav-text">문제 3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#문제-4-같은-속성-Property-과-행위-Method-를-가지는-클래스-만들어보기"><span class="nav-number">2.</span> <span class="nav-text">문제 4 (같은 속성(Property)과 행위(Method)를 가지는 클래스 만들어보기)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#문제-5-계산기"><span class="nav-number">3.</span> <span class="nav-text">문제 5 (계산기)</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
