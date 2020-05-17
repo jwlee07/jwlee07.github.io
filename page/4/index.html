@@ -154,6 +154,95 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jwlee07.github.io/2020/04/14/200414-playground/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JWBlog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/14/200414-playground/" class="post-title-link" itemprop="url">200414-playground</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-04-14 21:33:49 / Modified: 21:36:32" itemprop="dateCreated datePublished" datetime="2020-04-14T21:33:49+09:00">2020-04-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/playground/" itemprop="url" rel="index"><span itemprop="name">playground</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h2><h4 id="“p”-“u”-“p”-“p”-“y”-라는-값을-가진-배열에서-마지막-“p”-문자-하나만-삭제하기"><a href="#“p”-“u”-“p”-“p”-“y”-라는-값을-가진-배열에서-마지막-“p”-문자-하나만-삭제하기" class="headerlink" title="[“p”, “u”, “p”, “p”, “y”] 라는 값을 가진 배열에서 마지막 “p” 문자 하나만 삭제하기"></a>[“p”, “u”, “p”, “p”, “y”] 라는 값을 가진 배열에서 마지막 “p” 문자 하나만 삭제하기</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> chaArray = [<span class="string">"p"</span>, <span class="string">"u"</span>, <span class="string">"p"</span>, <span class="string">"p"</span>, <span class="string">"y"</span>]</span><br><span class="line"><span class="keyword">let</span> removechaArray = chaArray.remove(at: <span class="number">3</span>)</span><br><span class="line">chaArray</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="정수-타입의-배열을-2개-선언하고-두-배열의-값-중-겹치는-숫자들로만-이루어진-배열-만들기"><a href="#정수-타입의-배열을-2개-선언하고-두-배열의-값-중-겹치는-숫자들로만-이루어진-배열-만들기" class="headerlink" title="정수 타입의 배열을 2개 선언하고 두 배열의 값 중 겹치는 숫자들로만 이루어진 배열 만들기"></a>정수 타입의 배열을 2개 선언하고 두 배열의 값 중 겹치는 숫자들로만 이루어진 배열 만들기</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num1Array = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">12</span>, <span class="number">13</span>]</span><br><span class="line"><span class="keyword">var</span> num2Array = [<span class="number">2</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">9</span>, <span class="number">13</span>]</span><br><span class="line"><span class="keyword">var</span> num3Array: [<span class="type">Int</span>] = []</span><br><span class="line"><span class="keyword">for</span> num1 <span class="keyword">in</span> num1Array &#123;</span><br><span class="line">    <span class="keyword">for</span> num2 <span class="keyword">in</span> num2Array &#123;</span><br><span class="line">        <span class="keyword">if</span> num1 == num2 &#123;</span><br><span class="line">            num3Array.append(num1)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">num3Array</span><br></pre></td></tr></table></figure>
+
+
+
+
+<hr>
+<h2 id="Dictionary"><a href="#Dictionary" class="headerlink" title="Dictionary"></a>Dictionary</h2><h4 id="Dictionary-로-저장되어-있는-시험-성적의-평균-점수-구하기-ex-“kor”-92-”eng”-88-“math”-96-“science”-89"><a href="#Dictionary-로-저장되어-있는-시험-성적의-평균-점수-구하기-ex-“kor”-92-”eng”-88-“math”-96-“science”-89" class="headerlink" title="Dictionary 로 저장되어 있는 시험 성적의 평균 점수 구하기 (ex.  [“kor”: 92,”eng”: 88, “math”: 96, “science”: 89])"></a>Dictionary 로 저장되어 있는 시험 성적의 평균 점수 구하기 (ex.  [“kor”: 92,”eng”: 88, “math”: 96, “science”: 89])</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">averageDic</span> <span class="params">()</span></span> -&gt; <span class="type">Double</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> scores = [<span class="string">"kor"</span>: <span class="number">92</span>,<span class="string">"eng"</span>: <span class="number">88</span>, <span class="string">"math"</span>: <span class="number">96</span>, <span class="string">"science"</span>: <span class="number">89</span>]</span><br><span class="line">    <span class="keyword">var</span> result: <span class="type">Double</span> = <span class="number">0</span></span><br><span class="line">    <span class="keyword">var</span> scoresSum = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> value <span class="keyword">in</span> scores.values &#123;</span><br><span class="line">        scoresSum += value</span><br><span class="line">        result = <span class="type">Double</span>(scoresSum / scores.<span class="built_in">count</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="Dictionary로-저장된-scores-데이터를-튜플-타입을-지닌-배열로-변환하여-저장하기-ex-let-scores-“kor”-92-”eng”-88-“math”-96-“science”-89"><a href="#Dictionary로-저장된-scores-데이터를-튜플-타입을-지닌-배열로-변환하여-저장하기-ex-let-scores-“kor”-92-”eng”-88-“math”-96-“science”-89" class="headerlink" title="Dictionary로 저장된 scores 데이터를 튜플 타입을 지닌 배열로 변환하여 저장하기 (ex. let scores = [“kor”: 92,”eng”: 88, “math”: 96, “science”: 89])"></a>Dictionary로 저장된 scores 데이터를 튜플 타입을 지닌 배열로 변환하여 저장하기 (ex. let scores = [“kor”: 92,”eng”: 88, “math”: 96, “science”: 89])</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">var</span> scoreArray: [(<span class="type">String</span>,<span class="type">Int</span>)] = []</span><br><span class="line">    <span class="keyword">let</span> scores = [<span class="string">"kor"</span>: <span class="number">92</span>,<span class="string">"eng"</span>: <span class="number">88</span>, <span class="string">"math"</span>: <span class="number">96</span>, <span class="string">"science"</span>: <span class="number">89</span>]</span><br><span class="line">    <span class="keyword">var</span> stringKey = <span class="string">" "</span></span><br><span class="line">    <span class="keyword">var</span> stringValue = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> (key, value) <span class="keyword">in</span> scores &#123;</span><br><span class="line">        stringKey = key</span><br><span class="line">        stringValue = value</span><br><span class="line">        scoreArray.append((stringKey,stringValue))</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> scoreArray</span><br><span class="line">&#125;</span><br><span class="line">dicString()</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="보기-철수-apple-영희-banana-진수-grape-미희-strawberry"><a href="#보기-철수-apple-영희-banana-진수-grape-미희-strawberry" class="headerlink" title="[보기] 철수 - apple, 영희 - banana, 진수 - grape, 미희 - strawberry"></a>[보기] 철수 - apple, 영희 - banana, 진수 - grape, 미희 - strawberry</h4><h4 id="위-보기처럼-학생과-좋아하는-과일을-매칭시킨-정보를-Dictionary-형태로-만들고-스펠링에-‘e’가-들어간-과일을-모두-찾아-그것과-매칭되는-학생-이름을-배열로-반환하는-함수"><a href="#위-보기처럼-학생과-좋아하는-과일을-매칭시킨-정보를-Dictionary-형태로-만들고-스펠링에-‘e’가-들어간-과일을-모두-찾아-그것과-매칭되는-학생-이름을-배열로-반환하는-함수" class="headerlink" title="위 보기처럼 학생과 좋아하는 과일을 매칭시킨 정보를 Dictionary 형태로 만들고 스펠링에 ‘e’가 들어간 과일을 모두 찾아 그것과 매칭되는 학생 이름을 배열로 반환하는 함수"></a>위 보기처럼 학생과 좋아하는 과일을 매칭시킨 정보를 Dictionary 형태로 만들고 스펠링에 ‘e’가 들어간 과일을 모두 찾아 그것과 매칭되는 학생 이름을 배열로 반환하는 함수</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">personFruit</span> <span class="params">()</span></span> -&gt; [<span class="type">String</span>] &#123;</span><br><span class="line">    <span class="keyword">let</span> dicMatching = [<span class="string">"철수"</span>:<span class="string">"apple"</span>, <span class="string">"영희"</span>:<span class="string">"banana"</span>, <span class="string">"진수"</span>:<span class="string">"grape"</span>, <span class="string">"미희"</span>:<span class="string">"strawberry"</span>]</span><br><span class="line">    <span class="keyword">var</span> person = [<span class="type">String</span>]()</span><br><span class="line">    <span class="keyword">for</span> (key,value) <span class="keyword">in</span> dicMatching &#123;</span><br><span class="line">        <span class="keyword">if</span> value.<span class="built_in">contains</span>(<span class="string">"e"</span>) &#123;</span><br><span class="line">            person.append(key)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> person</span><br><span class="line">&#125;</span><br><span class="line">personFruit()</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="임의의-정수-배열을-입력받았을-때-홀수는-배열의-앞부분-짝수는-배열의-뒷부분에-위치하도록-구성된-새로운-배열을-반환하는-함수-ex-2-8-7-1-4-3-gt-7-1-3-2-8-4"><a href="#임의의-정수-배열을-입력받았을-때-홀수는-배열의-앞부분-짝수는-배열의-뒷부분에-위치하도록-구성된-새로운-배열을-반환하는-함수-ex-2-8-7-1-4-3-gt-7-1-3-2-8-4" class="headerlink" title="임의의 정수 배열을 입력받았을 때 홀수는 배열의 앞부분, 짝수는 배열의 뒷부분에 위치하도록 구성된 새로운 배열을 반환하는 함수 (ex. [2, 8, 7, 1, 4, 3] -&gt; [7, 1, 3, 2, 8, 4])"></a>임의의 정수 배열을 입력받았을 때 홀수는 배열의 앞부분, 짝수는 배열의 뒷부분에 위치하도록 구성된 새로운 배열을 반환하는 함수 (ex. [2, 8, 7, 1, 4, 3] -&gt; [7, 1, 3, 2, 8, 4])</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">arraySort</span> <span class="params">()</span></span> -&gt; [<span class="type">Int</span>] &#123;</span><br><span class="line">    <span class="keyword">let</span> firstNum = [<span class="number">2</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">3</span>]</span><br><span class="line">    <span class="keyword">var</span> numCount = <span class="number">0</span></span><br><span class="line">    <span class="keyword">var</span> sortNum: [<span class="type">Int</span>] = []</span><br><span class="line">    <span class="keyword">for</span> index <span class="keyword">in</span> firstNum &#123;</span><br><span class="line">        <span class="keyword">if</span> !(index % <span class="number">2</span> == <span class="number">0</span>) &#123;</span><br><span class="line">            sortNum.insert(index, at: numCount)</span><br><span class="line">            numCount += <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            sortNum.append(index)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sortNum</span><br><span class="line">&#125;</span><br><span class="line">arraySort()</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="0-9-사이의-숫자가-들어있는-배열에서-각-숫자가-몇-개씩-있는지-출력하는-함수"><a href="#0-9-사이의-숫자가-들어있는-배열에서-각-숫자가-몇-개씩-있는지-출력하는-함수" class="headerlink" title="0 ~ 9 사이의 숫자가 들어있는 배열에서 각 숫자가 몇 개씩 있는지 출력하는 함수"></a>0 ~ 9 사이의 숫자가 들어있는 배열에서 각 숫자가 몇 개씩 있는지 출력하는 함수</h4><h4 id="입력-1-3-3-3-8"><a href="#입력-1-3-3-3-8" class="headerlink" title="입력 : [1, 3, 3, 3, 8]"></a>입력 : [1, 3, 3, 3, 8]</h4><h4 id="결과"><a href="#결과" class="headerlink" title="결과 :"></a>결과 :</h4><h4 id="숫자-1-1개"><a href="#숫자-1-1개" class="headerlink" title="숫자 1 : 1개"></a>숫자 1 : 1개</h4><h4 id="숫자-3-3개"><a href="#숫자-3-3개" class="headerlink" title="숫자 3 : 3개"></a>숫자 3 : 3개</h4><h4 id="숫자-8-1개"><a href="#숫자-8-1개" class="headerlink" title="숫자 8 : 1개"></a>숫자 8 : 1개</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">numCount</span> <span class="params">(numArray: [Int])</span></span> -&gt; [<span class="type">Int</span>:<span class="type">Int</span>]&#123;</span><br><span class="line">    <span class="keyword">var</span> numDic: [<span class="type">Int</span>:<span class="type">Int</span>] = [:]</span><br><span class="line">    <span class="keyword">for</span> index <span class="keyword">in</span> numArray &#123;</span><br><span class="line">        <span class="keyword">if</span> numDic[index] != <span class="literal">nil</span> &#123;</span><br><span class="line">            numDic[index]! += <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            numDic[index] = <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> numDic</span><br><span class="line">    &#125;</span><br><span class="line">numCount(numArray: [<span class="number">1</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">8</span>])</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://jwlee07.github.io/2020/04/13/200413-playground/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -978,7 +1067,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-count">37</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
