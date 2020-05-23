@@ -154,6 +154,84 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jwlee07.github.io/2020/05/04/TypeCasting-playground/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JWBlog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/04/TypeCasting-playground/" class="post-title-link" itemprop="url">TypeCasting-playground</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-05-04 20:19:57 / Modified: 20:20:30" itemprop="dateCreated datePublished" datetime="2020-05-04T20:19:57+09:00">2020-05-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/playground/" itemprop="url" rel="index"><span itemprop="name">playground</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="문제-1"><a href="#문제-1" class="headerlink" title="문제 1"></a>문제 1</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">func addTwoValues(a: Int, b: Int) -&gt; Int &#123;</span><br><span class="line">  return a + b</span><br><span class="line">&#125;</span><br><span class="line">let task1: Any &#x3D; addTwoValues(a: 2, b: 3)</span><br><span class="line">위와 같이 정의된 변수 task1이 있을 때 다음의 더하기 연산이 제대로 동작하도록 할 것</span><br><span class="line">task1 + task1</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">addTwoValues</span><span class="params">(a: Int, b: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> a + b</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> task1: <span class="type">Any</span> = addTwoValues(a: <span class="number">2</span>, b: <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> task1ChangeInt = task1 <span class="keyword">as</span>? <span class="type">Int</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> result = task1ChangeInt + task1ChangeInt</span><br><span class="line">  <span class="built_in">print</span> (result)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="문제-2"><a href="#문제-2" class="headerlink" title="문제 2`"></a>문제 2`</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let task2: Any &#x3D; addTwoValues</span><br><span class="line">과제 1번에 이어 이번에는 위와 같이 정의된 task2 변수에 대해</span><br><span class="line">두 변수의 더하기 연산이 제대로 동작하도록 할 것</span><br><span class="line">(addTwoValues의 각 파라미터에는 원하는 값 입력)</span><br><span class="line">task2 + task2</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> task2: <span class="type">Any</span> = addTwoValues(a: <span class="number">3</span>, b: <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> task2ChangeInt = task2 <span class="keyword">as</span>? <span class="type">Int</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> result = task2ChangeInt + task2ChangeInt</span><br><span class="line">  <span class="built_in">print</span> (result)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="문제-3"><a href="#문제-3" class="headerlink" title="문제 3"></a>문제 3</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Car &#123;&#125;</span><br><span class="line">let values: [Any] &#x3D; [</span><br><span class="line">  1,</span><br><span class="line">  99.9,</span><br><span class="line">  (2.0, Double.pi),</span><br><span class="line">  Car(),</span><br><span class="line">  &#123; (str: String) -&gt; Int in str.count &#125;</span><br><span class="line">]</span><br><span class="line">위 values 변수의 각 값을 switch 문과 타입캐스팅을 이용해 출력하기</span><br><span class="line">for value in values &#123;</span><br><span class="line">  switch value &#123;</span><br><span class="line">    &#x2F;&#x2F; Code 구현</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>&#123;&#125;</span><br><span class="line"><span class="keyword">let</span> values: [<span class="type">Any</span>] = [</span><br><span class="line">  <span class="number">1</span>,</span><br><span class="line">  <span class="number">99.9</span>,</span><br><span class="line">  (<span class="number">2.0</span>, <span class="type">Double</span>.pi),</span><br><span class="line">  <span class="type">Car</span>(),</span><br><span class="line">  &#123; (str: <span class="type">String</span>) -&gt; <span class="type">Int</span> <span class="keyword">in</span> str.<span class="built_in">count</span> &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> value <span class="keyword">in</span> values &#123;</span><br><span class="line">  <span class="keyword">switch</span> value &#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="keyword">let</span> int <span class="keyword">as</span> <span class="type">Int</span>:</span><br><span class="line">    <span class="built_in">print</span> (int)</span><br><span class="line">  <span class="keyword">case</span> <span class="keyword">let</span> doubel <span class="keyword">as</span> <span class="type">Double</span>:</span><br><span class="line">    <span class="built_in">print</span> (doubel)</span><br><span class="line">  <span class="keyword">case</span> <span class="keyword">let</span> tuple <span class="keyword">as</span> (<span class="type">Double</span>,<span class="type">Double</span>):</span><br><span class="line">    <span class="built_in">print</span> (tuple)</span><br><span class="line">  <span class="keyword">case</span> <span class="keyword">let</span> classCheck <span class="keyword">as</span> <span class="type">Car</span>:</span><br><span class="line">    <span class="built_in">print</span> (classCheck)</span><br><span class="line">  <span class="keyword">case</span> <span class="keyword">let</span> closur <span class="keyword">as</span> ((<span class="type">String</span>) -&gt; <span class="type">Int</span>):</span><br><span class="line">    <span class="built_in">print</span> (closur)</span><br><span class="line">  <span class="keyword">default</span>:</span><br><span class="line">    <span class="keyword">break</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://jwlee07.github.io/2020/05/03/UI-Login-MenuPay-project/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -802,82 +880,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://jwlee07.github.io/2020/04/24/Frame-Bounds-playground/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JWBlog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/24/Frame-Bounds-playground/" class="post-title-link" itemprop="url">Frame/Bounds-playground</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-04-24 18:15:06 / Modified: 18:16:01" itemprop="dateCreated datePublished" datetime="2020-04-24T18:15:06+09:00">2020-04-24</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/playground/" itemprop="url" rel="index"><span itemprop="name">playground</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="문제-1"><a href="#문제-1" class="headerlink" title="문제 1"></a>문제 1</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">green view를 super로 생성 후 red, blue를 sub view로 생성</span><br></pre></td></tr></table></figure>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"><span class="keyword">import</span> PlaygroundSupport</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyViewController</span> : <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">loadView</span><span class="params">()</span></span> &#123;</span><br><span class="line">            <span class="keyword">let</span> view = <span class="type">UIView</span>()</span><br><span class="line">            view.frame.size = <span class="type">CGSize</span> (width: <span class="number">375</span>, height: <span class="number">667</span>)</span><br><span class="line">            view.backgroundColor = .white</span><br><span class="line">            <span class="keyword">self</span>.view = view</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">let</span> greenView = setupSuperView()</span><br><span class="line">        <span class="keyword">let</span> redView = setupSubView(superView: greenView)</span><br><span class="line">        <span class="keyword">let</span> blueView = setupSubViewTwo(superView: greenView)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">setupSuperView</span><span class="params">()</span></span> -&gt; <span class="type">UIView</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> greenView = <span class="type">UIView</span>()</span><br><span class="line">        greenView.frame = <span class="type">CGRect</span> (x: <span class="number">50</span>, y: <span class="number">50</span>, width: <span class="number">200</span>, height: <span class="number">200</span>)</span><br><span class="line">        greenView.backgroundColor = .green</span><br><span class="line">        view.addSubview(greenView)</span><br><span class="line">        <span class="keyword">return</span> greenView</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">setupSubView</span><span class="params">(superView: UIView)</span></span> -&gt; <span class="type">UIView</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> redView = <span class="type">UIView</span>()</span><br><span class="line">        redView.frame = <span class="type">CGRect</span> (x: <span class="number">0</span>, y: <span class="number">0</span>, width: <span class="number">80</span>, height: <span class="number">80</span>)</span><br><span class="line">        redView.backgroundColor = .red</span><br><span class="line">        superView.addSubview(redView)</span><br><span class="line">        <span class="keyword">return</span> redView</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">setupSubViewTwo</span><span class="params">(superView: UIView)</span></span> -&gt; <span class="type">UIView</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> blueView = <span class="type">UIView</span>()</span><br><span class="line">        blueView.frame = <span class="type">CGRect</span> (x: <span class="number">100</span>, y: <span class="number">100</span>, width: <span class="number">80</span>, height: <span class="number">80</span>)</span><br><span class="line">        blueView.backgroundColor = .blue</span><br><span class="line">        superView.addSubview(blueView)</span><br><span class="line">        <span class="keyword">return</span> blueView</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">PlaygroundPage</span>.current.liveView = <span class="type">MyViewController</span>()</span><br></pre></td></tr></table></figure>
-
-<h4 id="문제-2"><a href="#문제-2" class="headerlink" title="문제 2"></a>문제 2</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">super view 정보를 사용하여 width 지정</span><br></pre></td></tr></table></figure>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"><span class="keyword">import</span> PlaygroundSupport</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="class"><span class="keyword">class</span> <span class="title">MyViewController</span> : <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line">     <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">loadView</span><span class="params">()</span></span> &#123;</span><br><span class="line">         <span class="keyword">let</span> view = <span class="type">UIView</span>()</span><br><span class="line">         view.frame.size = <span class="type">CGSize</span> (width: <span class="number">375</span>, height: <span class="number">667</span>)</span><br><span class="line">         view.backgroundColor = .white</span><br><span class="line">         <span class="keyword">self</span>.view = view</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">         <span class="keyword">let</span> blueView = blueViewSup()</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="function"><span class="keyword">func</span> <span class="title">blueViewSup</span> <span class="params">()</span></span> -&gt; <span class="type">UIView</span> &#123;</span><br><span class="line">         <span class="keyword">let</span> blueView = <span class="type">UIView</span>()</span><br><span class="line">        blueView.frame = <span class="type">CGRect</span> (x: <span class="number">15</span>, y: <span class="number">15</span>, width: view.frame.size.width - <span class="number">30</span>, height: <span class="number">100</span>)</span><br><span class="line">         blueView.backgroundColor = .blue</span><br><span class="line">         view.addSubview(blueView)</span><br><span class="line">         <span class="keyword">return</span> blueView</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="type">PlaygroundPage</span>.current.liveView = <span class="type">MyViewController</span>()</span><br></pre></td></tr></table></figure>
-
-<h4 id="문제-3"><a href="#문제-3" class="headerlink" title="문제 3"></a>문제 3</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">view 3개 생성 후 orign 30, size 60 간격으로 생성</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"><span class="keyword">import</span> PlaygroundSupport</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyViewController</span> : <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">loadView</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">let</span> view = <span class="type">UIView</span>()</span><br><span class="line">        view.frame.size = <span class="type">CGSize</span> (width: <span class="number">375</span>, height: <span class="number">667</span>)</span><br><span class="line">        view.backgroundColor = .white</span><br><span class="line">        <span class="keyword">self</span>.view = view</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">let</span> blueView = blueViewSup()</span><br><span class="line">        <span class="keyword">let</span> redView = redViewSub(superView: blueView)</span><br><span class="line">        <span class="keyword">let</span> greenView = greenViewSub(superView: redView)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">blueViewSup</span> <span class="params">()</span></span> -&gt; <span class="type">UIView</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> blueView = <span class="type">UIView</span>()</span><br><span class="line">        blueView.frame = <span class="type">CGRect</span> (x: <span class="number">30</span>, y: <span class="number">30</span>, width: view.frame.size.width - <span class="number">60</span>, height: view.frame.size.height - <span class="number">60</span>)</span><br><span class="line">        blueView.backgroundColor = .blue</span><br><span class="line">        view.addSubview(blueView)</span><br><span class="line">        <span class="keyword">return</span> blueView</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">redViewSub</span> <span class="params">(superView: UIView)</span></span> -&gt; <span class="type">UIView</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> redView = <span class="type">UIView</span>()</span><br><span class="line">        redView.frame = <span class="type">CGRect</span> (x: <span class="number">30</span>, y: <span class="number">30</span>, width: view.frame.size.width - <span class="number">120</span>, height: view.frame.size.height - <span class="number">120</span>)</span><br><span class="line">        redView.backgroundColor = .red</span><br><span class="line">        superView.addSubview(redView)</span><br><span class="line">        <span class="keyword">return</span> redView</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">greenViewSub</span> <span class="params">(superView: UIView)</span></span> -&gt; <span class="type">UIView</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> greenView = <span class="type">UIView</span>()</span><br><span class="line">        greenView.frame = <span class="type">CGRect</span> (x: <span class="number">30</span>, y: <span class="number">30</span>, width: view.frame.size.width - <span class="number">180</span> , height: view.frame.size.height - <span class="number">180</span>)</span><br><span class="line">        greenView.backgroundColor = .green</span><br><span class="line">        superView.addSubview(greenView)</span><br><span class="line">        <span class="keyword">return</span> greenView</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">PlaygroundPage</span>.current.liveView = <span class="type">MyViewController</span>()</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -946,7 +948,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
