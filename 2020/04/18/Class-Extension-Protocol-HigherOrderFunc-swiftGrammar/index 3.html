@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jwlee07.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Class 상속 개념 override : 상속받은 내용을 변경 하는 것 참조 : 어디서 접근하여 값을 변경하던 공통되게 변경 ( 값은 1개, 참조하는 Class들은 그 1개를 바라 봄) -&gt; Class에서만 가능  12345678910111213141516171819202122232425262728293031class ScoreBoard &amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Class&#x2F;Extension&#x2F;Protocol&#x2F;HigherOrderFunc-swiftGrammar">
+<meta property="og:url" content="https://jwlee07.github.io/2020/04/18/Class-Extension-Protocol-HigherOrderFunc-swiftGrammar/index.html">
+<meta property="og:site_name" content="JWBlog">
+<meta property="og:description" content="Class 상속 개념 override : 상속받은 내용을 변경 하는 것 참조 : 어디서 접근하여 값을 변경하던 공통되게 변경 ( 값은 1개, 참조하는 Class들은 그 1개를 바라 봄) -&gt; Class에서만 가능  12345678910111213141516171819202122232425262728293031class ScoreBoard &amp;#123;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-18T09:04:20.000Z">
+<meta property="article:modified_time" content="2020-04-19T07:19:30.850Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="swiftGrammar">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://jwlee07.github.io/2020/04/18/Class-Extension-Protocol-HigherOrderFunc-swiftGrammar/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Class/Extension/Protocol/HigherOrderFunc-swiftGrammar | JWBlog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">JWBlog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Study Diary</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jwlee07.github.io/2020/04/18/Class-Extension-Protocol-HigherOrderFunc-swiftGrammar/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JWBlog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Class/Extension/Protocol/HigherOrderFunc-swiftGrammar
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-04-18 18:04:20" itemprop="dateCreated datePublished" datetime="2020-04-18T18:04:20+09:00">2020-04-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-19 16:19:30" itemprop="dateModified" datetime="2020-04-19T16:19:30+09:00">2020-04-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/swiftGrammar/" itemprop="url" rel="index"><span itemprop="name">swiftGrammar</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h2><ul>
+<li>상속 개념</li>
+<li>override : 상속받은 내용을 변경 하는 것</li>
+<li>참조 : 어디서 접근하여 값을 변경하던 공통되게 변경 ( 값은 1개, 참조하는 Class들은 그 1개를 바라 봄) -&gt; Class에서만 가능</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ScoreBoard</span> </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> homeScore = <span class="number">0</span></span><br><span class="line">	<span class="keyword">var</span> awayScore = <span class="number">0</span></span><br><span class="line">	<span class="function"><span class="keyword">func</span> <span class="title">result</span><span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"\(homeScore)"</span> + <span class="string">" : "</span> + <span class="string">"\(ayauScore)"</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 상속</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Tennis</span>: <span class="title">ScoreBoard</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> tennis = <span class="type">Tennis</span>()</span><br><span class="line">tennis.awayScore = <span class="number">0</span></span><br><span class="line">tennis.homeScore =<span class="number">15</span></span><br><span class="line">tennis.result() -&gt; <span class="number">15</span>:<span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// override ( : -&gt; - 로 변경)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Soccer</span>: <span class="title">ScoreBoard</span> </span>&#123;</span><br><span class="line">	<span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">result</span><span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">""</span>\(homeScore)<span class="string">" + "</span> - <span class="string">" + "</span>\(ayauScore)<span class="string">"</span></span><br><span class="line"><span class="string">	&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">// 참조</span></span><br><span class="line"><span class="string">var socer = Socer()</span></span><br><span class="line"><span class="string">var socer2 = socer</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">socer2.homeScore = 10</span></span><br><span class="line"><span class="string">scoer.hoemScore -&gt; 10 (socer2에서 homeScore의 값을 변경하였지만 Soccer의 값 homeScore 변경되어 참조 시 변경한 값으로 참조 )</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h2><ul>
+<li>Class, struct, enum</li>
+<li>Stored Properties : 값이 저장된 형태</li>
+<li>Computed Properties : 계산을 직접 넣어서 특정한 로직이 들어가 있는 형태<ul>
+<li>get만 선언 시 read-only (입력 x)</li>
+<li>set 값을 입력 받아야 하는 경우</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeClass</span> </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> firstScore = <span class="number">10</span></span><br><span class="line">	<span class="keyword">var</span> secondeScore = <span class="number">20</span></span><br><span class="line">	<span class="comment">//var totalScore = firstScore + secondSocer -&gt; X</span></span><br><span class="line">		<span class="keyword">var</span> totalScore: <span class="type">Int</span> &#123;</span><br><span class="line">			<span class="keyword">get</span> &#123;</span><br><span class="line">				<span class="keyword">return</span> firstScore + secondScore</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">/* // 생략</span></span><br><span class="line"><span class="comment">			set &#123;</span></span><br><span class="line"><span class="comment">			&#125;</span></span><br><span class="line"><span class="comment">			*/</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SomeStruct</span> </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> firstScore = <span class="number">10</span></span><br><span class="line">	<span class="keyword">var</span> secondScore = <span class="number">20</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> totalScore: <span class="type">Int</span> &#123;</span><br><span class="line">		<span class="keyword">get</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> firstScore + secondScore</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">/* // 생략</span></span><br><span class="line"><span class="comment">		set &#123;</span></span><br><span class="line"><span class="comment">		&#125;</span></span><br><span class="line"><span class="comment">		*/</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">SomeEnum</span> </span>&#123;</span><br><span class="line">	<span class="keyword">case</span> iPhone, iPad</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> price: <span class="type">Int</span> &#123;</span><br><span class="line">		<span class="keyword">switch</span> <span class="keyword">self</span> &#123;</span><br><span class="line">		<span class="keyword">case</span> .iPad:</span><br><span class="line">			<span class="keyword">return</span> <span class="number">500</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">case</span> .iPhone:</span><br><span class="line">			<span class="keyword">return</span> <span class="number">400</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Initialization"><a href="#Initialization" class="headerlink" title="Initialization"></a>Initialization</h2><ul>
+<li>초기화</li>
+<li>옵셔널 사용 시 초기화 x</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">and</span> <span class="title">class</span> <span class="title">Score</span> </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> homeTeamScore: <span class="type">Int</span> -&gt; 초기화 값 x</span><br><span class="line">	<span class="keyword">var</span> homeTeamScore: <span class="type">Int</span> -&gt; 초기화 값 x</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 초기화</span></span><br><span class="line">	<span class="keyword">init</span> () &#123;</span><br><span class="line">		homeTeamScore = <span class="number">0</span></span><br><span class="line">		awayTeamScore = <span class="number">0</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">func</span> <span class="title">totalScore</span><span class="params">()</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> homeTeamScore! + awayTeamScore!</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Deinitilization"><a href="#Deinitilization" class="headerlink" title="Deinitilization"></a>Deinitilization</h2><ul>
+<li>초기화 해제</li>
+<li>실행(class,struct,enum) 해제되는 순간에 실행 해야됨.</li>
+<li>ex. 팝업</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Score</span> </span>&#123;</span><br><span class="line">	<span class="keyword">init</span>() &#123;</span><br><span class="line">		<span class="built_in">print</span> (<span class="string">"생성되는 시점에 호출"</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">deinit</span> &#123;</span><br><span class="line">		<span class="built_in">print</span> (<span class="string">"소멸되는 시점에 호출"</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 생성</span></span><br><span class="line"><span class="keyword">var</span> myScore = <span class="type">Score</span>()</span><br><span class="line">myScore</span><br><span class="line"></span><br><span class="line">출력.</span><br><span class="line">생성되는 시점에 호출</span><br><span class="line"></span><br><span class="line"><span class="comment">// 해제</span></span><br><span class="line"><span class="keyword">var</span> myScore: <span class="type">Score?</span> = <span class="type">Score</span>()</span><br><span class="line">myScore = <span class="literal">nil</span></span><br><span class="line"></span><br><span class="line">출력.</span><br><span class="line"><span class="literal">nil</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Extension"><a href="#Extension" class="headerlink" title="Extension"></a>Extension</h2><ul>
+<li>기존의 class, struct 등 구조에 기능을 추가하기 위해 사용</li>
+<li>값을 새로 구성할 순 없다</li>
+<li>어디서도 접근가능 하나 어느 곳에 소유될 순 없다</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UIcolor</span> </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> mainRedColor: <span class="type">UIColor</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="type">UIColor</span>(red: <span class="number">230</span>/<span class="number">255</span>, green: <span class="number">50</span>/<span class="number">255</span>, blue: <span class="number">70</span>/<span class="number">255</span>, alpha: <span class="number">1</span>)</span><br><span class="line">			<span class="keyword">var</span> subGreenColor: <span class="type">UIColor</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="type">UIColor</span>(red: <span class="number">100</span>/<span class="number">255</span>, green: <span class="number">240</span>/<span class="number">255</span>, blue: <span class="number">70</span>/<span class="number">255</span>, alpha: <span class="number">1</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> titleColor: <span class="type">UIColor!</span></span><br><span class="line"><span class="keyword">var</span> descriptionColor: <span class="type">UIColor!</span></span><br><span class="line"></span><br><span class="line">titleColor = <span class="type">UIColor</span>().mainRedColor</span><br><span class="line">descripionColor = <span class="type">UIColor</span>().subGreenColor</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Protocol"><a href="#Protocol" class="headerlink" title="Protocol"></a>Protocol</h2><ul>
+<li>특정한 조건을 강제</li>
+<li>앱 생성 시 call back 형식으로 많이 사용</li>
+<li>특정한 값이 저장, 지정되는 것이 아닌 스타일(규격)만 지정</li>
+<li>protocol안의 코드는 반드시 구현해야 함</li>
+<li>한 구조에 중복해서 사용 가능</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">DeskSize</span> </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> width: <span class="type">Int</span> &#123;<span class="keyword">get</span> <span class="keyword">set</span>&#125;</span><br><span class="line">	<span class="keyword">var</span> height: int &#123;<span class="keyword">get</span> <span class="keyword">set</span>&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">func</span> <span class="title">area</span><span class="params">()</span></span> -&gt; <span class="type">Int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span>: <span class="title">DeskSize</span> </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> width: <span class="type">Int</span> = <span class="number">0</span></span><br><span class="line">	<span class="keyword">var</span> height: <span class="type">Int</span> = <span class="number">0</span></span><br><span class="line">	<span class="function"><span class="keyword">func</span> <span class="title">area</span><span class="params">()</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> width * height</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myClass: <span class="type">MyClass</span>()</span><br><span class="line">myClass.width = <span class="number">20</span></span><br><span class="line">myClass.height = <span class="number">30</span></span><br><span class="line">myClass.area() = <span class="number">600</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Generic"><a href="#Generic" class="headerlink" title="Generic"></a>Generic</h2><ul>
+<li>타입을 사용할 때 정의 (각 상황에 따라 변경 가능)</li>
+<li>Numeric : 숫자형식의 모든 타입 가능</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">plusGeneric</span>&lt;T: Numeric&gt;<span class="params">(a: T, b: T)</span></span> -&gt; <span class="type">T</span> &#123; <span class="keyword">return</span> a+ b&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> result = plusGeneric (a: &lt;<span class="type">Int</span>,<span class="type">Double</span>,<span class="type">Float</span> 가능&gt; , b: &lt;<span class="type">Int</span>, <span class="type">Double</span>, <span class="type">Float</span> 가능&gt;)</span><br><span class="line">result</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Higher-Order-Func"><a href="#Higher-Order-Func" class="headerlink" title="Higher Order Func"></a>Higher Order Func</h2><ul>
+<li>Map<ul>
+<li>옵셔널 상태 유지</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> numberArray = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="keyword">let</span> mapped = numberArray.<span class="built_in">map</span> &#123;$<span class="number">0</span> * <span class="number">10</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(mapped) -&gt; [<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> stringArray = [<span class="string">"lee"</span>, <span class="string">"june"</span>, <span class="string">"kim"</span>]</span><br><span class="line"><span class="keyword">let</span> mappedString = stringArray.<span class="built_in">map</span> &#123;$<span class="number">0</span>. uppercased()&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> (mappedString) -&gt; [<span class="string">"LEE"</span>, <span class="string">"JUNE"</span>, <span class="string">"KIM"</span>]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Complact Map<ul>
+<li>옵셔널 상태 해제</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> someArray: [<span class="type">Any</span>] = [<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="string">"lee"</span>,<span class="string">"jin"</span>]</span><br><span class="line"><span class="keyword">let</span> compactMapped = someArray.compactMap &#123; $<span class="number">0</span> <span class="keyword">as</span>? <span class="type">Int</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(compactMapped) -&gt; <span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Filter</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> numberArray = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="keyword">let</span> over3 = numberArray.<span class="built_in">filter</span>&#123; $<span class="number">0</span> &gt; <span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(over3) -&gt; <span class="number">4.5</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Reduce<ul>
+<li>해당 변수 (Array 등) 의 결과 값 출력 시</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> numberArray = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> reduceResult = numArray.<span class="built_in">reduce</span>(<span class="number">0</span>) &#123; $<span class="number">0</span> + $<span class="number">1</span>&#125;</span><br><span class="line"><span class="built_in">print</span> (reduceResult) -&gt; <span class="number">15</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Sort<ul>
+<li>sroted : return type (해당 값 별개로 정렬된 값 생성)</li>
+<li>sort : void ( 해당 값 자체를 정렬)</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> numberArray = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> numberArraySorted = numberArray.sroted()</span><br><span class="line">numberArray.<span class="built_in">sort</span>()</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/swiftGrammar/" rel="tag"># swiftGrammar</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/17/Closure-playground/" rel="prev" title="Closure-playground">
+      <i class="fa fa-chevron-left"></i> Closure-playground
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/04/19/Gesture-project/" rel="next" title="Gesture-project">
+      Gesture-project <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Class"><span class="nav-number">1.</span> <span class="nav-text">Class</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Properties"><span class="nav-number">2.</span> <span class="nav-text">Properties</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Initialization"><span class="nav-number">3.</span> <span class="nav-text">Initialization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deinitilization"><span class="nav-number">4.</span> <span class="nav-text">Deinitilization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Extension"><span class="nav-number">5.</span> <span class="nav-text">Extension</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Protocol"><span class="nav-number">6.</span> <span class="nav-text">Protocol</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Generic"><span class="nav-number">7.</span> <span class="nav-text">Generic</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Higher-Order-Func"><span class="nav-number">8.</span> <span class="nav-text">Higher Order Func</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
