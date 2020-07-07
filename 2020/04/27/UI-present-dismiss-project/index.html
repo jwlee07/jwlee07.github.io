@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jwlee07.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="문제 1123456789103개의 뷰 컨트롤러 사이에 화면 전환하기A는 B로 가는 버튼B는 A로 돌아가는 dismiss 버튼과 C로 가는 버튼C는 A 또는 B로 돌아가는 dismiss 버튼(참고)A -&gt; B  &lt;- B -&gt; C     B &lt;- CA   &lt;-    C  AViewController12345678910111213141">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UI_present,dismiss-project">
+<meta property="og:url" content="https://jwlee07.github.io/2020/04/27/UI-present-dismiss-project/index.html">
+<meta property="og:site_name" content="JWBlog">
+<meta property="og:description" content="문제 1123456789103개의 뷰 컨트롤러 사이에 화면 전환하기A는 B로 가는 버튼B는 A로 돌아가는 dismiss 버튼과 C로 가는 버튼C는 A 또는 B로 돌아가는 dismiss 버튼(참고)A -&gt; B  &lt;- B -&gt; C     B &lt;- CA   &lt;-    C  AViewController12345678910111213141">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-27T13:15:07.000Z">
+<meta property="article:modified_time" content="2020-04-27T13:16:51.719Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="project">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://jwlee07.github.io/2020/04/27/UI-present-dismiss-project/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>UI_present,dismiss-project | JWBlog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">JWBlog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Study Diary</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jwlee07.github.io/2020/04/27/UI-present-dismiss-project/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JWBlog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          UI_present,dismiss-project
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-04-27 22:15:07 / Modified: 22:16:51" itemprop="dateCreated datePublished" datetime="2020-04-27T22:15:07+09:00">2020-04-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/project/" itemprop="url" rel="index"><span itemprop="name">project</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="문제-1"><a href="#문제-1" class="headerlink" title="문제 1"></a>문제 1</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">3개의 뷰 컨트롤러 사이에 화면 전환하기</span><br><span class="line">A는 B로 가는 버튼</span><br><span class="line">B는 A로 돌아가는 dismiss 버튼과 C로 가는 버튼</span><br><span class="line">C는 A 또는 B로 돌아가는 dismiss 버튼</span><br><span class="line"></span><br><span class="line">(참고)</span><br><span class="line">A -&gt; B</span><br><span class="line">  &lt;- B -&gt; C</span><br><span class="line">     B &lt;- C</span><br><span class="line">A   &lt;-    C</span><br></pre></td></tr></table></figure>
+
+<h4 id="AViewController"><a href="#AViewController" class="headerlink" title="AViewController"></a>AViewController</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AViewController</span>: <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="type">GoToB</span> = <span class="type">UIButton</span>()</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line">        view.backgroundColor = .red</span><br><span class="line">        createGoToB()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">createGoToB</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="type">GoToB</span>.setTitle(<span class="string">"GoToB"</span>, <span class="keyword">for</span>: .normal)</span><br><span class="line">        <span class="type">GoToB</span>.frame = <span class="type">CGRect</span> (x: view.center.x, y: view.center.y, width: <span class="number">100</span>, height: <span class="number">100</span>)</span><br><span class="line">        <span class="type">GoToB</span>.sizeToFit()</span><br><span class="line">        <span class="type">GoToB</span>.setTitleColor(.black, <span class="keyword">for</span>: .normal)</span><br><span class="line">        <span class="type">GoToB</span>.addTarget(<span class="keyword">self</span>, action: #selector(changeViewB), <span class="keyword">for</span>: .touchUpInside)</span><br><span class="line">        view.addSubview(<span class="type">GoToB</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@objc</span> <span class="function"><span class="keyword">func</span> <span class="title">changeViewB</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">let</span> changeB = <span class="type">BViewController</span>()</span><br><span class="line">        present(changeB, animated: <span class="literal">true</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="BViewController"><a href="#BViewController" class="headerlink" title="BViewController"></a>BViewController</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BViewController</span>: <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> backToA = <span class="type">UIButton</span>()</span><br><span class="line">    <span class="keyword">let</span> goToC = <span class="type">UIButton</span>()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line">        view.backgroundColor = .blue</span><br><span class="line">        createGoToC()</span><br><span class="line">        createBackToA()</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">createBackToA</span><span class="params">()</span></span> &#123;</span><br><span class="line">        backToA.setTitle(<span class="string">"BackToA"</span>, <span class="keyword">for</span>: .normal)</span><br><span class="line">        backToA.setTitleColor(.red, <span class="keyword">for</span>: .normal)</span><br><span class="line">        backToA.frame = <span class="type">CGRect</span> (x: view.center.x - <span class="number">100</span>, y: view.center.y, width: <span class="number">100</span>, height: <span class="number">50</span>)</span><br><span class="line">        backToA.sizeToFit()</span><br><span class="line">        backToA.addTarget(<span class="keyword">self</span>, action: #selector(backA(<span class="number">_</span>:)), <span class="keyword">for</span>: .touchUpInside)</span><br><span class="line">        view.addSubview(backToA)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">createGoToC</span><span class="params">()</span></span> &#123;</span><br><span class="line">        goToC.setTitle(<span class="string">"GoToC"</span>, <span class="keyword">for</span>: .normal)</span><br><span class="line">        goToC.setTitleColor(.green, <span class="keyword">for</span>: .normal)</span><br><span class="line">        goToC.frame = <span class="type">CGRect</span> (x: view.center.x + <span class="number">100</span>, y: view.center.y, width: <span class="number">100</span>, height: <span class="number">50</span>)</span><br><span class="line">        goToC.sizeToFit()</span><br><span class="line">        goToC.addTarget(<span class="keyword">self</span>, action: #selector(goC(<span class="number">_</span>:)), <span class="keyword">for</span>: .touchUpInside)</span><br><span class="line">        view.addSubview(goToC)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@objc</span> <span class="function"><span class="keyword">func</span> <span class="title">backA</span> <span class="params">(<span class="number">_</span> sender: UIButton)</span></span> &#123;</span><br><span class="line">        dismiss(animated: <span class="literal">true</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@objc</span> <span class="function"><span class="keyword">func</span> <span class="title">goC</span> <span class="params">(<span class="number">_</span> sender: UIButton)</span></span> &#123;</span><br><span class="line">        <span class="keyword">let</span> changeC = <span class="type">CViewController</span>()</span><br><span class="line">        present(changeC, animated: <span class="literal">true</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="CViewController"><a href="#CViewController" class="headerlink" title="CViewController"></a>CViewController</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CViewController</span>: <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> backToB = <span class="type">UIButton</span>()</span><br><span class="line">    <span class="keyword">let</span> backToA = <span class="type">UIButton</span>()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line">        view.backgroundColor = .green</span><br><span class="line">        createbackToA()</span><br><span class="line">        createBackToB()</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">createbackToA</span><span class="params">()</span></span> &#123;</span><br><span class="line">        backToA.setTitle(<span class="string">"backToA"</span>, <span class="keyword">for</span>: .normal)</span><br><span class="line">        backToA.setTitleColor(.red, <span class="keyword">for</span>: .normal)</span><br><span class="line">        backToA.frame = <span class="type">CGRect</span> (x: view.center.x - <span class="number">100</span>, y: view.center.y, width: <span class="number">100</span>, height: <span class="number">50</span>)</span><br><span class="line">        backToA.addTarget(<span class="keyword">self</span>, action: #selector(backA(<span class="number">_</span>:)), <span class="keyword">for</span>: .touchUpInside)</span><br><span class="line">        view.addSubview(backToA)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">createBackToB</span><span class="params">()</span></span> &#123;</span><br><span class="line">        backToB.setTitle(<span class="string">"BackToB"</span>, <span class="keyword">for</span>: .normal)</span><br><span class="line">        backToB.setTitleColor(.blue, <span class="keyword">for</span>: .normal)</span><br><span class="line">        backToB.frame = <span class="type">CGRect</span> (x: view.center.x + <span class="number">100</span>, y: view.center.y, width: <span class="number">100</span>, height: <span class="number">50</span>)</span><br><span class="line">        backToB.addTarget(<span class="keyword">self</span>, action: #selector((backB(<span class="number">_</span>:))), <span class="keyword">for</span>: .touchUpInside)</span><br><span class="line">        view.addSubview(backToB)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@objc</span> <span class="function"><span class="keyword">func</span> <span class="title">backA</span><span class="params">(<span class="number">_</span> sender: UIButton)</span></span> &#123;</span><br><span class="line">        presentingViewController?.presentingViewController?.dismiss(animated: <span class="literal">true</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@objc</span> <span class="function"><span class="keyword">func</span> <span class="title">backB</span><span class="params">(<span class="number">_</span> sender: UIButton)</span></span> &#123;</span><br><span class="line">        dismiss(animated: <span class="literal">true</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="문제-2"><a href="#문제-2" class="headerlink" title="문제 2"></a>문제 2</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ViewController 데이터 전달</span><br><span class="line">AViewController 와 BViewController 를 만든 뒤, 각각 하나씩의 Label 생성</span><br><span class="line">A에서 B로 화면을 넘어갈 때는 B의 Label 값이 이전 값에서 +3 증가</span><br><span class="line">B에서 A로 화면을 넘어갈 때는 A의 Label 값이 이전 값에서 +1 증가</span><br><span class="line">e.g. A에서 B로 갈 때 3, B에서 다시 A로 넘어올 때 4, 다시 A에서 B로 가면 7, 다시 A로 오면 8</span><br></pre></td></tr></table></figure>
+
+<h4 id="AViewController-1"><a href="#AViewController-1" class="headerlink" title="AViewController"></a>AViewController</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> countLabelA = <span class="type">UILabel</span>()</span><br><span class="line">    <span class="keyword">let</span> buttonA = <span class="type">UIButton</span>()</span><br><span class="line">    <span class="keyword">var</span> numCount = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line">        createLabelA()</span><br><span class="line">        createButtonA()</span><br><span class="line">        view.backgroundColor = .purple</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">createLabelA</span><span class="params">()</span></span> &#123;</span><br><span class="line">        countLabelA.text = <span class="string">"0"</span></span><br><span class="line">        countLabelA.frame = <span class="type">CGRect</span> (x: view.center.x - <span class="number">50</span>, y: view.center.y - <span class="number">200</span>, width: <span class="number">200</span>, height: <span class="number">50</span>)</span><br><span class="line">        countLabelA.textColor = .black</span><br><span class="line">        countLabelA.textAlignment = .center</span><br><span class="line">        view.addSubview(countLabelA)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">createButtonA</span><span class="params">()</span></span> &#123;</span><br><span class="line">        buttonA.setTitle(<span class="string">"ButtonA"</span>, <span class="keyword">for</span>: .normal)</span><br><span class="line">        buttonA.frame = <span class="type">CGRect</span> (x: view.center.x - <span class="number">50</span>, y: view.center.y, width: <span class="number">200</span>, height: <span class="number">100</span>)</span><br><span class="line">        buttonA.setTitleColor(.blue, <span class="keyword">for</span>: .normal)</span><br><span class="line">        buttonA.addTarget(<span class="keyword">self</span>, action: #selector(presentView(<span class="number">_</span>:)), <span class="keyword">for</span>: .touchUpInside)</span><br><span class="line">        view.addSubview(buttonA)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@objc</span> <span class="function"><span class="keyword">func</span> <span class="title">presentView</span><span class="params">(<span class="number">_</span> sender: UIButton)</span></span> &#123;</span><br><span class="line">        <span class="keyword">let</span> changeViewB = <span class="type">BViewController</span>()</span><br><span class="line">        numCount += <span class="number">3</span></span><br><span class="line">        changeViewB.countLabelB.text = <span class="type">String</span>(numCount)</span><br><span class="line">        present(changeViewB, animated: <span class="literal">true</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="BViewController-1"><a href="#BViewController-1" class="headerlink" title="BViewController"></a>BViewController</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BViewController</span>: <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> buttonB = <span class="type">UIButton</span>()</span><br><span class="line">    <span class="keyword">let</span> countLabelB = <span class="type">UILabel</span>()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line">        createButtonB()</span><br><span class="line">        createLabelB()</span><br><span class="line">        view.backgroundColor = .darkGray</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">createButtonB</span><span class="params">()</span></span> &#123;</span><br><span class="line">        buttonB.setTitle(<span class="string">"ButtonB"</span>, <span class="keyword">for</span>: .normal)</span><br><span class="line">        buttonB.frame = <span class="type">CGRect</span> (x: view.center.x - <span class="number">50</span>, y: view.center.y, width: <span class="number">200</span>, height: <span class="number">100</span>)</span><br><span class="line">        buttonB.setTitleColor(.blue, <span class="keyword">for</span>: .normal)</span><br><span class="line">        buttonB.addTarget(<span class="keyword">self</span>, action: #selector(dismissView(<span class="number">_</span>:)), <span class="keyword">for</span>: .touchUpInside)</span><br><span class="line">        view.addSubview(buttonB)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">createLabelB</span><span class="params">()</span></span> &#123;</span><br><span class="line">        countLabelB.frame = <span class="type">CGRect</span> (x: view.center.x - <span class="number">50</span>, y: view.center.y - <span class="number">200</span>, width: <span class="number">200</span>, height: <span class="number">50</span>)</span><br><span class="line">        countLabelB.textColor = .black</span><br><span class="line">        countLabelB.textAlignment = .center</span><br><span class="line">        view.addSubview(countLabelB)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@objc</span> <span class="function"><span class="keyword">func</span> <span class="title">dismissView</span><span class="params">(<span class="number">_</span> sender: UIButton)</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> <span class="type">AVC</span> = presentingViewController <span class="keyword">as</span>? <span class="type">ViewController</span> &#123;</span><br><span class="line">            <span class="type">AVC</span>.numCount += <span class="number">1</span></span><br><span class="line">            <span class="type">AVC</span>.countLabelA.text = (<span class="type">String</span>(<span class="type">AVC</span>.numCount))</span><br><span class="line">        &#125;</span><br><span class="line">        dismiss(animated: <span class="literal">true</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/project/" rel="tag"># project</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/26/UI-segmented-label-view-project/" rel="prev" title="UI_segmented,label,view-project">
+      <i class="fa fa-chevron-left"></i> UI_segmented,label,view-project
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/04/28/UI-TextField-Aleart-project/" rel="next" title="UI_TextField,Aleart-project">
+      UI_TextField,Aleart-project <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#문제-1"><span class="nav-number">1.</span> <span class="nav-text">문제 1</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AViewController"><span class="nav-number">1.0.1.</span> <span class="nav-text">AViewController</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BViewController"><span class="nav-number">1.0.2.</span> <span class="nav-text">BViewController</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CViewController"><span class="nav-number">1.0.3.</span> <span class="nav-text">CViewController</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#문제-2"><span class="nav-number">2.</span> <span class="nav-text">문제 2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AViewController-1"><span class="nav-number">2.0.1.</span> <span class="nav-text">AViewController</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BViewController-1"><span class="nav-number">2.0.2.</span> <span class="nav-text">BViewController</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
