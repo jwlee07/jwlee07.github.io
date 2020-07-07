@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Optionals/Enum-swiftGrammar | JWBlog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="OptionalsType Declaration 값이 없을 수 있는 상황에 사용 2가지 경우의 수 값이 없음 값이 있음, 접근을 위헤 옵셔널 unwrap 가능   Optional -&gt; NonOptional (X) Optional &lt;- NonOptional (O)123456let possibleNumber &#x3D; &quot;123&quot; -&gt; 123var con">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Optionals&#x2F;Enum-swiftGrammar">
+<meta property="og:url" content="https://jwlee07.github.io/2020/04/16/Optionals-Enum-swiftGrammar/index.html">
+<meta property="og:site_name" content="JWBlog">
+<meta property="og:description" content="OptionalsType Declaration 값이 없을 수 있는 상황에 사용 2가지 경우의 수 값이 없음 값이 있음, 접근을 위헤 옵셔널 unwrap 가능   Optional -&gt; NonOptional (X) Optional &lt;- NonOptional (O)123456let possibleNumber &#x3D; &quot;123&quot; -&gt; 123var con">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-16T12:04:46.000Z">
+<meta property="article:modified_time" content="2020-04-16T12:05:29.548Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="swiftGrammar">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="JWBlog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">JWBlog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Study Diary</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jwlee07.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="posts-Optionals-Enum-swiftGrammar" class="article article-type-posts" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/16/Optionals-Enum-swiftGrammar/" class="article-date">
+  <time datetime="2020-04-16T12:04:46.000Z" itemprop="datePublished">2020-04-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/swiftGrammar/">swiftGrammar</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Optionals/Enum-swiftGrammar
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Optionals"><a href="#Optionals" class="headerlink" title="Optionals"></a>Optionals</h2><h4 id="Type-Declaration"><a href="#Type-Declaration" class="headerlink" title="Type Declaration"></a>Type Declaration</h4><ul>
+<li>값이 없을 수 있는 상황에 사용</li>
+<li>2가지 경우의 수<ul>
+<li>값이 없음</li>
+<li>값이 있음, 접근을 위헤 옵셔널 unwrap 가능</li>
+</ul>
+</li>
+<li>Optional -&gt; NonOptional (X)</li>
+<li>Optional &lt;- NonOptional (O)<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> possibleNumber = <span class="string">"123"</span> -&gt; <span class="number">123</span></span><br><span class="line"><span class="keyword">var</span> convertedNumber = <span class="type">Int</span>(possibleNumber) -&gt; <span class="literal">nil</span></span><br><span class="line">type(of: convertedNumber) -&gt; <span class="type">Optional</span>&lt;<span class="type">Int</span>&gt;.<span class="type">Type</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> &lt;variable name&gt;: &lt;<span class="type">Type?</span>&gt;</span><br><span class="line"> <span class="keyword">var</span> &lt;variable name&gt;: &lt;<span class="type">Optional</span>&lt;<span class="type">Type</span>&gt;&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="UnWrapping"><a href="#UnWrapping" class="headerlink" title="UnWrapping"></a>UnWrapping</h4><ul>
+<li><p>Forced</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> convertedNumber != <span class="literal">nil</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Binding</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> &lt;nonOptional&gt; = &lt;<span class="type">OptionalExpression</span>&gt; &#123;</span><br><span class="line">  &lt;<span class="type">Code</span>&gt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">while</span> <span class="keyword">let</span> &lt;nonOptional&gt; = &lt;<span class="type">OptionalExpression</span>&gt; &#123;</span><br><span class="line">  &lt;<span class="type">Code</span>&gt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">guard</span> <span class="keyword">let</span> &lt;nonOptional&gt; = &lt;<span class="type">OptionalExpression</span>&gt; <span class="keyword">else</span> &#123;</span><br><span class="line">  &lt;<span class="type">Code</span>&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="Enum"><a href="#Enum" class="headerlink" title="Enum"></a>Enum</h2><h4 id="Type-Declaration-1"><a href="#Type-Declaration-1" class="headerlink" title="Type Declaration"></a>Type Declaration</h4><ul>
+<li>연관된 값의 그룹에 공통 타입을 정의 한 후 해당 값들 사용</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">enum CompassPoint &#123;</span><br><span class="line">  case north</span><br><span class="line">  case south</span><br><span class="line">  case east</span><br><span class="line">  case west</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Raw-Value"><a href="#Raw-Value" class="headerlink" title="Raw Value"></a>Raw Value</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Gender</span>: <span class="title">String</span> </span>&#123;</span><br><span class="line">  <span class="keyword">case</span> male = <span class="string">"남자"</span>, female = <span class="string">"여자"</span>, other = <span class="string">"기타"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">Gender</span>.male -&gt; male</span><br><span class="line"><span class="type">Gender</span>.male.rawValue -&gt; <span class="string">"남자"</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">WeekdayAgain</span>: <span class="title">Int</span> </span>&#123;</span><br><span class="line">  <span class="keyword">case</span> sunday = <span class="number">5</span>, monday, tuesday, wednesday, thursday, friday, saturday</span><br><span class="line"><span class="comment">//  case sunday, monday = 100, tuesday = 101, wednesday, thursday, friday, saturday</span></span><br><span class="line"><span class="comment">//  case sunday = 1, monday = 1, tuesday = 2, wednesday, thursday, friday, saturday</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">WeekdayAgain</span>.sunday -&gt; sunday</span><br><span class="line"><span class="type">WeekdayAgain</span>.sunday.rawValue -&gt; <span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="type">WeekdayAgain</span>.wednesday -&gt; wednesday</span><br><span class="line"><span class="type">WeekdayAgain</span>.wednesday.rawValue -&gt; <span class="number">8</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Nested"><a href="#Nested" class="headerlink" title="Nested"></a>Nested</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Device</span>: <span class="title">String</span> </span>&#123;</span><br><span class="line">  <span class="keyword">case</span> iPhone, iPad, tv, watch</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">printType</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</span><br><span class="line">    <span class="keyword">case</span> .iPad, .iPhone, .tv:</span><br><span class="line">      <span class="built_in">print</span>(<span class="string">"device :"</span>, <span class="keyword">self</span>)</span><br><span class="line">    <span class="keyword">case</span> .watch:</span><br><span class="line">      <span class="built_in">print</span>(<span class="string">"apple Watch"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> iPhone = <span class="type">Device</span>.iPhone -&gt; iPhone</span><br><span class="line">iPhone.printType() -&gt; iPhone</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Wearable</span> </span>&#123;</span><br><span class="line">  <span class="class"><span class="keyword">enum</span> <span class="title">Weight</span>: <span class="title">Int</span> </span>&#123;</span><br><span class="line">    <span class="keyword">case</span> light = <span class="number">1</span></span><br><span class="line">    <span class="keyword">case</span> heavy = <span class="number">3</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">case</span> helmet(weight: <span class="type">Weight</span>)</span><br><span class="line">  <span class="keyword">case</span> boots</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">info</span><span class="params">()</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">    <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</span><br><span class="line">    <span class="keyword">case</span> .helmet(<span class="keyword">let</span> weight):</span><br><span class="line">      <span class="keyword">return</span> weight.rawValue * <span class="number">2</span></span><br><span class="line">    <span class="keyword">case</span> .boots:</span><br><span class="line">      <span class="keyword">return</span> <span class="number">3</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> boots = <span class="type">Wearable</span>.boots</span><br><span class="line">boots.info()</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> woodenHelmet = <span class="type">Wearable</span>.helmet(weight: .light)</span><br><span class="line">woodenHelmet.info() -&gt; <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> ironHelmet = <span class="type">Wearable</span>.helmet(weight: .heavy)</span><br><span class="line">ironHelmet.info() -&gt; <span class="number">6</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jwlee07.github.io/2020/04/16/Optionals-Enum-swiftGrammar/" data-id="ckcbvj6ky00205f0gdg2d8spo" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swiftGrammar/" rel="tag">swiftGrammar</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/04/17/Closure-playground/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Closure-playground
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/04/16/Optionals-Enum/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Optionals/Enum-playground</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reference/">Reference</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/playground/">playground</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/swiftGrammar/">swiftGrammar</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/viewControllerGrammar/">viewControllerGrammar</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reference/" rel="tag">Reference</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/playground/" rel="tag">playground</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/project/" rel="tag">project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swiftGrammar/" rel="tag">swiftGrammar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/viewControllerGrammar/" rel="tag">viewControllerGrammar</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Reference/" style="font-size: 10px;">Reference</a> <a href="/tags/playground/" style="font-size: 16.67px;">playground</a> <a href="/tags/project/" style="font-size: 20px;">project</a> <a href="/tags/swiftGrammar/" style="font-size: 13.33px;">swiftGrammar</a> <a href="/tags/viewControllerGrammar/" style="font-size: 10px;">viewControllerGrammar</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/27/UI-Navigation-TabBar-project/">UI_Navigation,TabBar-project</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/26/tableView-customView-project/">tableView_customView-project</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/wookiGame1-v1-project/">wookiGame1_v1-project</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/21/Calculator-v3-project/">Calculator-v3-project</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/20/Calculator-v2-project/">Calculator_v2-project</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>TypeCasting-playground | JWBlog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="문제 1123456func addTwoValues(a: Int, b: Int) -&gt; Int &amp;#123;  return a + b&amp;#125;let task1: Any &#x3D; addTwoValues(a: 2, b: 3)위와 같이 정의된 변수 task1이 있을 때 다음의 더하기 연산이 제대로 동작하도록 할 것task1 + task1  123456789">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TypeCasting-playground">
+<meta property="og:url" content="https://jwlee07.github.io/2020/05/04/TypeCasting-playground/index.html">
+<meta property="og:site_name" content="JWBlog">
+<meta property="og:description" content="문제 1123456func addTwoValues(a: Int, b: Int) -&gt; Int &amp;#123;  return a + b&amp;#125;let task1: Any &#x3D; addTwoValues(a: 2, b: 3)위와 같이 정의된 변수 task1이 있을 때 다음의 더하기 연산이 제대로 동작하도록 할 것task1 + task1  123456789">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-04T11:19:57.000Z">
+<meta property="article:modified_time" content="2020-05-04T11:20:30.096Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="playground">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="JWBlog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">JWBlog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Study Diary</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jwlee07.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="posts-TypeCasting-playground" class="article article-type-posts" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/04/TypeCasting-playground/" class="article-date">
+  <time datetime="2020-05-04T11:19:57.000Z" itemprop="datePublished">2020-05-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/playground/">playground</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      TypeCasting-playground
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="문제-1"><a href="#문제-1" class="headerlink" title="문제 1"></a>문제 1</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">func addTwoValues(a: Int, b: Int) -&gt; Int &#123;</span><br><span class="line">  return a + b</span><br><span class="line">&#125;</span><br><span class="line">let task1: Any &#x3D; addTwoValues(a: 2, b: 3)</span><br><span class="line">위와 같이 정의된 변수 task1이 있을 때 다음의 더하기 연산이 제대로 동작하도록 할 것</span><br><span class="line">task1 + task1</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">addTwoValues</span><span class="params">(a: Int, b: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> a + b</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> task1: <span class="type">Any</span> = addTwoValues(a: <span class="number">2</span>, b: <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> task1ChangeInt = task1 <span class="keyword">as</span>? <span class="type">Int</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> result = task1ChangeInt + task1ChangeInt</span><br><span class="line">  <span class="built_in">print</span> (result)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="문제-2"><a href="#문제-2" class="headerlink" title="문제 2`"></a>문제 2`</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let task2: Any &#x3D; addTwoValues</span><br><span class="line">과제 1번에 이어 이번에는 위와 같이 정의된 task2 변수에 대해</span><br><span class="line">두 변수의 더하기 연산이 제대로 동작하도록 할 것</span><br><span class="line">(addTwoValues의 각 파라미터에는 원하는 값 입력)</span><br><span class="line">task2 + task2</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> task2: <span class="type">Any</span> = addTwoValues(a: <span class="number">3</span>, b: <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> task2ChangeInt = task2 <span class="keyword">as</span>? <span class="type">Int</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> result = task2ChangeInt + task2ChangeInt</span><br><span class="line">  <span class="built_in">print</span> (result)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="문제-3"><a href="#문제-3" class="headerlink" title="문제 3"></a>문제 3</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Car &#123;&#125;</span><br><span class="line">let values: [Any] &#x3D; [</span><br><span class="line">  1,</span><br><span class="line">  99.9,</span><br><span class="line">  (2.0, Double.pi),</span><br><span class="line">  Car(),</span><br><span class="line">  &#123; (str: String) -&gt; Int in str.count &#125;</span><br><span class="line">]</span><br><span class="line">위 values 변수의 각 값을 switch 문과 타입캐스팅을 이용해 출력하기</span><br><span class="line">for value in values &#123;</span><br><span class="line">  switch value &#123;</span><br><span class="line">    &#x2F;&#x2F; Code 구현</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>&#123;&#125;</span><br><span class="line"><span class="keyword">let</span> values: [<span class="type">Any</span>] = [</span><br><span class="line">  <span class="number">1</span>,</span><br><span class="line">  <span class="number">99.9</span>,</span><br><span class="line">  (<span class="number">2.0</span>, <span class="type">Double</span>.pi),</span><br><span class="line">  <span class="type">Car</span>(),</span><br><span class="line">  &#123; (str: <span class="type">String</span>) -&gt; <span class="type">Int</span> <span class="keyword">in</span> str.<span class="built_in">count</span> &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> value <span class="keyword">in</span> values &#123;</span><br><span class="line">  <span class="keyword">switch</span> value &#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="keyword">let</span> int <span class="keyword">as</span> <span class="type">Int</span>:</span><br><span class="line">    <span class="built_in">print</span> (int)</span><br><span class="line">  <span class="keyword">case</span> <span class="keyword">let</span> doubel <span class="keyword">as</span> <span class="type">Double</span>:</span><br><span class="line">    <span class="built_in">print</span> (doubel)</span><br><span class="line">  <span class="keyword">case</span> <span class="keyword">let</span> tuple <span class="keyword">as</span> (<span class="type">Double</span>,<span class="type">Double</span>):</span><br><span class="line">    <span class="built_in">print</span> (tuple)</span><br><span class="line">  <span class="keyword">case</span> <span class="keyword">let</span> classCheck <span class="keyword">as</span> <span class="type">Car</span>:</span><br><span class="line">    <span class="built_in">print</span> (classCheck)</span><br><span class="line">  <span class="keyword">case</span> <span class="keyword">let</span> closur <span class="keyword">as</span> ((<span class="type">String</span>) -&gt; <span class="type">Int</span>):</span><br><span class="line">    <span class="built_in">print</span> (closur)</span><br><span class="line">  <span class="keyword">default</span>:</span><br><span class="line">    <span class="keyword">break</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jwlee07.github.io/2020/05/04/TypeCasting-playground/" data-id="ckcbvj6l3002b5f0g5qx11ebo" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/playground/" rel="tag">playground</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/05/06/CheckFood-project/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          CheckFood-project
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/05/03/UI-Login-MenuPay-project/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">UI_Login,MenuPay-project</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reference/">Reference</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/playground/">playground</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/swiftGrammar/">swiftGrammar</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/viewControllerGrammar/">viewControllerGrammar</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reference/" rel="tag">Reference</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/playground/" rel="tag">playground</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/project/" rel="tag">project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swiftGrammar/" rel="tag">swiftGrammar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/viewControllerGrammar/" rel="tag">viewControllerGrammar</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Reference/" style="font-size: 10px;">Reference</a> <a href="/tags/playground/" style="font-size: 16.67px;">playground</a> <a href="/tags/project/" style="font-size: 20px;">project</a> <a href="/tags/swiftGrammar/" style="font-size: 13.33px;">swiftGrammar</a> <a href="/tags/viewControllerGrammar/" style="font-size: 10px;">viewControllerGrammar</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/27/UI-Navigation-TabBar-project/">UI_Navigation,TabBar-project</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/26/tableView-customView-project/">tableView_customView-project</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/wookiGame1-v1-project/">wookiGame1_v1-project</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/21/Calculator-v3-project/">Calculator-v3-project</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/20/Calculator-v2-project/">Calculator_v2-project</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>200419-viewControllerGrammar | JWBlog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="View Controller LifeCycle View Controller가 생성, 화면에 나오고, 사라지고 하는 개념  1234567891011121314151617181920212223242526272829303132333435363738import UIKitclass DetailViewController: UIViewController &amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="200419-viewControllerGrammar">
+<meta property="og:url" content="https://jwlee07.github.io/2020/04/19/200419-viewControllerGrammar/index.html">
+<meta property="og:site_name" content="JWBlog">
+<meta property="og:description" content="View Controller LifeCycle View Controller가 생성, 화면에 나오고, 사라지고 하는 개념  1234567891011121314151617181920212223242526272829303132333435363738import UIKitclass DetailViewController: UIViewController &amp;#123;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-19T11:36:32.000Z">
+<meta property="article:modified_time" content="2020-04-19T11:39:51.010Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="viewControllerGrammar">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="JWBlog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">JWBlog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Study Diary</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jwlee07.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="posts-200419-viewControllerGrammar" class="article article-type-posts" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/19/200419-viewControllerGrammar/" class="article-date">
+  <time datetime="2020-04-19T11:36:32.000Z" itemprop="datePublished">2020-04-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/viewControllerGrammar/">viewControllerGrammar</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      200419-viewControllerGrammar
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="View-Controller-LifeCycle"><a href="#View-Controller-LifeCycle" class="headerlink" title="View Controller LifeCycle"></a>View Controller LifeCycle</h2><ul>
+<li>View Controller가 생성, 화면에 나오고, 사라지고 하는 개념</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DetailViewController</span>: <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">awakeFromNib</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.awakeFromNib()</span><br><span class="line">        <span class="built_in">print</span> (<span class="string">"awakeFromNib"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line">        <span class="built_in">print</span> (<span class="string">"viewDidLoad"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewWillAppear</span><span class="params">(<span class="number">_</span> animated: Bool)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewWillAppear(animated)</span><br><span class="line">        <span class="built_in">print</span> (<span class="string">"viewWillAppear"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidAppear</span><span class="params">(<span class="number">_</span> animated: Bool)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewWillAppear(animated)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewWillDisappear</span><span class="params">(<span class="number">_</span> animated: Bool)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewWillDisappear(animated)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"viewWillDisappear"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidDisappear</span><span class="params">(<span class="number">_</span> animated: Bool)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidDisappear(animated)</span><br><span class="line">        <span class="built_in">print</span> (<span class="string">"viewDidDisappear"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">deinit</span> &#123;</span><br><span class="line">        <span class="built_in">print</span> (<span class="string">"deinit"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Struct-VS-Class"><a href="#Struct-VS-Class" class="headerlink" title="Struct VS Class"></a>Struct VS Class</h2><ul>
+<li>데이터 구조 형태로 사용 시 Struct 형태가 시간 절약.  </li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Test</span> <span class="title">Struct</span> </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> name: <span class="type">String</span></span><br><span class="line">	<span class="keyword">var</span> age: <span class="type">Int</span></span><br><span class="line">	<span class="keyword">init</span>(name: <span class="type">String</span>, age: <span class="type">Int</span>) &#123;</span><br><span class="line">		<span class="keyword">self</span>.name = name</span><br><span class="line">		<span class="keyword">self</span>.age = age</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> <span class="title">Class</span> </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> name: <span class="type">String</span></span><br><span class="line">	<span class="keyword">var</span> age: <span class="type">Int</span></span><br><span class="line">	<span class="keyword">init</span>(name: <span class="type">String</span>, age: <span class="type">Int</span>) &#123;</span><br><span class="line">		<span class="keyword">self</span>.name = name</span><br><span class="line">		<span class="keyword">self</span>.age = age</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line">	<span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">		<span class="keyword">super</span>.viewDidLoad()</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">var</span> testStruct: [<span class="type">TestStruct</span>] = []</span><br><span class="line">		<span class="keyword">var</span> testStruct: [<span class="type">TestClass</span>] = []</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">let</span> startTime = <span class="type">CFAbsoluteTimeGetCurrent</span>()</span><br><span class="line">		<span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span>..&lt;<span class="number">10000000</span> &#123;</span><br><span class="line">			testStruct.append(<span class="type">TestStruct</span>.<span class="keyword">init</span>(name:<span class="string">"aa"</span>, age:<span class="number">0</span>))</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">let</span> durationTime = <span class="type">CFAbsoluteTimeGetCurrent</span>() - startTime</span><br><span class="line">	</span><br><span class="line">			<span class="keyword">let</span> startTime = <span class="type">CFAbsoluteTimeGetCurrent</span>()</span><br><span class="line">		<span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span>..&lt;<span class="number">10000000</span> &#123;</span><br><span class="line">			testClass.append(<span class="type">TestClass</span>.<span class="keyword">init</span>(name:<span class="string">"aa"</span>, age:<span class="number">0</span>))</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">let</span> durationTime = <span class="type">CFAbsoluteTimeGetCurrent</span>() - startTime</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">// 결과</span></span><br><span class="line">durationTime <span class="class"><span class="keyword">struct</span> : 2.4948948</span></span><br><span class="line"><span class="class"><span class="title">durationTime</span> <span class="title">Class</span> : 3.5948948</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Unwind-Segue"><a href="#Unwind-Segue" class="headerlink" title="Unwind Segue"></a>Unwind Segue</h2><ul>
+<li>View간의 Button을 사용하여 이동 중 가고자 하는 곳에 다이렉트로 View 이동 가능</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">unwind</span><span class="params">(segue: UIStoryboardSegue)</span></span> &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jwlee07.github.io/2020/04/19/200419-viewControllerGrammar/" data-id="ckcbvj6kg000g5f0gboq96lta" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/viewControllerGrammar/" rel="tag">viewControllerGrammar</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/04/20/OOP-Class-swiftGrammar/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          OOP_Class-swiftGrammar
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/04/19/Gesture-project/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Gesture-project</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reference/">Reference</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/playground/">playground</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/swiftGrammar/">swiftGrammar</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/viewControllerGrammar/">viewControllerGrammar</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reference/" rel="tag">Reference</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/playground/" rel="tag">playground</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/project/" rel="tag">project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swiftGrammar/" rel="tag">swiftGrammar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/viewControllerGrammar/" rel="tag">viewControllerGrammar</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Reference/" style="font-size: 10px;">Reference</a> <a href="/tags/playground/" style="font-size: 16.67px;">playground</a> <a href="/tags/project/" style="font-size: 20px;">project</a> <a href="/tags/swiftGrammar/" style="font-size: 13.33px;">swiftGrammar</a> <a href="/tags/viewControllerGrammar/" style="font-size: 10px;">viewControllerGrammar</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/27/UI-Navigation-TabBar-project/">UI_Navigation,TabBar-project</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/26/tableView-customView-project/">tableView_customView-project</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/wookiGame1-v1-project/">wookiGame1_v1-project</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/21/Calculator-v3-project/">Calculator-v3-project</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/20/Calculator-v2-project/">Calculator_v2-project</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

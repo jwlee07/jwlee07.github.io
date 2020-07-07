@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Class_inheritance,OOP_property-swiftGrammar | JWBlog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Access Control 다른 모듈의 코드 또는 다른 소스 파일 등으로 접근 제한 하는 것 세부 구현 내용을 숨기고 접근할 수 있는 인터페이스 가능 Class, Property 별도로 생각  Open &#x2F; Public another playground, project open : 상속 후 override 가능  Internal 프로젝트, 모듈 안에서 사용">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Class_inheritance,OOP_property-swiftGrammar">
+<meta property="og:url" content="https://jwlee07.github.io/2020/04/21/Class-inheritance-OOP-property-swiftGrammar/index.html">
+<meta property="og:site_name" content="JWBlog">
+<meta property="og:description" content="Access Control 다른 모듈의 코드 또는 다른 소스 파일 등으로 접근 제한 하는 것 세부 구현 내용을 숨기고 접근할 수 있는 인터페이스 가능 Class, Property 별도로 생각  Open &#x2F; Public another playground, project open : 상속 후 override 가능  Internal 프로젝트, 모듈 안에서 사용">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-21T08:23:53.000Z">
+<meta property="article:modified_time" content="2020-04-21T08:25:21.506Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="swiftGrammar">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="JWBlog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">JWBlog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Study Diary</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jwlee07.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="posts-Class-inheritance-OOP-property-swiftGrammar" class="article article-type-posts" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/21/Class-inheritance-OOP-property-swiftGrammar/" class="article-date">
+  <time datetime="2020-04-21T08:23:53.000Z" itemprop="datePublished">2020-04-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/swiftGrammar/">swiftGrammar</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Class_inheritance,OOP_property-swiftGrammar
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Access-Control"><a href="#Access-Control" class="headerlink" title="Access Control"></a>Access Control</h2><ul>
+<li>다른 모듈의 코드 또는 다른 소스 파일 등으로 접근 제한 하는 것</li>
+<li>세부 구현 내용을 숨기고 접근할 수 있는 인터페이스 가능</li>
+<li>Class, Property 별도로 생각</li>
+</ul>
+<h4 id="Open-Public"><a href="#Open-Public" class="headerlink" title="Open / Public"></a>Open / Public</h4><ul>
+<li>another playground, project</li>
+<li>open : 상속 후 override 가능</li>
+</ul>
+<h4 id="Internal"><a href="#Internal" class="headerlink" title="Internal"></a>Internal</h4><ul>
+<li>프로젝트, 모듈 안에서 사용 가능</li>
+<li>기본 값 (생략)</li>
+</ul>
+<h4 id="Fileprivate"><a href="#Fileprivate" class="headerlink" title="Fileprivate"></a>Fileprivate</h4><ul>
+<li>선언 한 File 내에서 접근 가능</li>
+<li>Property 생성 시 최소 FIleprivate 이상 레벨 타입 설정</li>
+<li>Class 인스턴스 시 변수에 Fileprivate 설정 필요</li>
+</ul>
+<h4 id="Private"><a href="#Private" class="headerlink" title="Private"></a>Private</h4><ul>
+<li>선언 한 곳(ex. func) 안에서만 접근 가능</li>
+<li>Class 인스턴스 시 변수에 Private 설정 필요</li>
+</ul>
+<h4 id="Nested-Type"><a href="#Nested-Type" class="headerlink" title="Nested Type"></a>Nested Type</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Class -&gt; Property</span><br><span class="line"></span><br><span class="line">Private  -&gt;  Fileprivate</span><br><span class="line">Fileprivate  -&gt;  Fileprivate</span><br><span class="line">Internal  -&gt;  Internal</span><br><span class="line">Public  -&gt;  Internal</span><br><span class="line">Open  -&gt;  Internal</span><br></pre></td></tr></table></figure>
+
+<h4 id="Getters-amp-amp-Setters"><a href="#Getters-amp-amp-Setters" class="headerlink" title="Getters &amp;&amp; Setters"></a>Getters &amp;&amp; Setters</h4><ul>
+<li>Getter 와 Setter 는 그것이 속하는 변수, 상수 등에 대해 동일한 접근 레벨을 가짐 이 때 Getter 와 Setter 에 대해서 각각 다른 접근 제한자 설정 가능</li>
+<li>Getter 와 Setter 에 대해 각각 명시적으로 표현</li>
+</ul>
+<hr>
+<h2 id="OOP-4대-특징"><a href="#OOP-4대-특징" class="headerlink" title="OOP 4대 특징"></a>OOP 4대 특징</h2><h4 id="추상화-디자인"><a href="#추상화-디자인" class="headerlink" title="추상화 (디자인)"></a>추상화 (디자인)</h4><ul>
+<li>단순화 시키는 것</li>
+<li>공통점만 취함</li>
+<li>중요한 부분을 강조</li>
+<li>Protocol 사용<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">Human</span> </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> name: <span class="type">String</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">  <span class="keyword">var</span> age: <span class="type">Int</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">  <span class="keyword">var</span> gender: <span class="type">String</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">  <span class="keyword">var</span> height: <span class="type">Double</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">sleep</span><span class="params">()</span></span></span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">eat</span><span class="params">()</span></span></span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">walk</span><span class="params">()</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span>: <span class="title">Human</span> </span>&#123;</span><br><span class="line">	안의 고정적으로 입력해야할 프로토콜에서 선언하였던 값들이 생성</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="캡슐화-구현"><a href="#캡슐화-구현" class="headerlink" title="캡슐화 (구현)"></a>캡슐화 (구현)</h4><ul>
+<li>데이터 캡슐화 : 연관된 상태와 행동을 하나의 단위(객체)로 캡슐화</li>
+<li>은닉화 : 외부에 필요한 것만 알리고 불필요하거나 감출 정보는 숨김</li>
+<li>접근 제한자(private) 사용</li>
+</ul>
+<h4 id="상속성"><a href="#상속성" class="headerlink" title="상속성"></a>상속성</h4><ul>
+<li>부모 클래스의 특징을 다른 클래스가 물려받아 그 속성과 기능을 동일하게 사용하는 것</li>
+<li>범용적인 클래스 작성 뒤 중복되는 속성과 기능을 쉽게 구현</li>
+<li>final 상속 x</li>
+<li>상속 받은 클래스의 프로퍼티를 override해서 사용 가능</li>
+</ul>
+<h4 id="다형성"><a href="#다형성" class="headerlink" title="다형성"></a>다형성</h4><ul>
+<li><p>Overriding</p>
+<ul>
+<li>상위 클래스에서 상속 받은 매서드를 하위클래스에서 재정의 후 사용</li>
+<li>동일 요청이 객체에 따라 다르게 응답</li>
+</ul>
+</li>
+<li><p>Overloading</p>
+<ul>
+<li>동일한 이름의 메서드가 매개 변수의 이름, 타입, 개수 등의 차이에 따라 다르게 동작</li>
+</ul>
+</li>
+<li><p>super. -&gt; 부모클래스 호출</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jwlee07.github.io/2020/04/21/Class-inheritance-OOP-property-swiftGrammar/" data-id="ckcbvj6kp00155f0g1yq1guqh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swiftGrammar/" rel="tag">swiftGrammar</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/04/23/labelCount-viewChangeColor-project/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          labelCount/viewChangeColor-project
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/04/21/property/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">property</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reference/">Reference</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/playground/">playground</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/swiftGrammar/">swiftGrammar</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/viewControllerGrammar/">viewControllerGrammar</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reference/" rel="tag">Reference</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/playground/" rel="tag">playground</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/project/" rel="tag">project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swiftGrammar/" rel="tag">swiftGrammar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/viewControllerGrammar/" rel="tag">viewControllerGrammar</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Reference/" style="font-size: 10px;">Reference</a> <a href="/tags/playground/" style="font-size: 16.67px;">playground</a> <a href="/tags/project/" style="font-size: 20px;">project</a> <a href="/tags/swiftGrammar/" style="font-size: 13.33px;">swiftGrammar</a> <a href="/tags/viewControllerGrammar/" style="font-size: 10px;">viewControllerGrammar</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/27/UI-Navigation-TabBar-project/">UI_Navigation,TabBar-project</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/26/tableView-customView-project/">tableView_customView-project</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/wookiGame1-v1-project/">wookiGame1_v1-project</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/21/Calculator-v3-project/">Calculator-v3-project</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/20/Calculator-v2-project/">Calculator_v2-project</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
