@@ -14,7 +14,7 @@ timezone: Asia/Seoul
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: jwlee07 # the main title
+title: wooklio # the main title
 
 tagline: 업무와 학습을 통해 얻은 지식을 기록하고 공유하는 블로그입니다. # it will display as the subtitle
 
@@ -26,7 +26,7 @@ description: >- # used by seo meta and the atom feed
 url: "https://jwlee07.github.io/"
 
 github:
-  username: jwlee07 # change to your GitHub username
+  username: wooklio # change to your GitHub username
 
 twitter:
   username: twitter_username # change to your Twitter username
@@ -34,7 +34,7 @@ twitter:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: jwlee07
+  name: wooklio
   email: apzk21413@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
