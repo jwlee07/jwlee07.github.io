@@ -1,6 +1,6 @@
 ---
-title: "[데이터 분석] 인터파크 티켓 공연 리뷰 분석 웹 사이트 만들기 - 1"
-categories: [데이터 분석, 리뷰 분석기]
+title: "[데이터 분석] 공연 리뷰 분석 웹 대시보드 만들기 - 1"
+categories: [데이터 분석, 공연 리뷰]
 tags: [data analysis, review]
 ---
 
