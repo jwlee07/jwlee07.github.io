@@ -66,16 +66,16 @@ tags: [brand identity]
 
 예매 과정은 빠르고 쉽게, 공연을 기다리는 즐거움은 온전히 느낄 수 있도록 돕는 것이 우리의 목표에요. 복잡한은 덜어내고 가장 좋은 순간에만 집중할 수 있도록 하는 브랜드가 되고자해요.
 
-![Desktop View](/assets/img/posts/2025-01-20-brand-identity-1/2025-01-20-brand-identity-1-1.png)
+![Desktop View](/assets/img/posts/2025-01-18-brand-identity-1/2025-01-18-brand-identity-1-1.png)
 
 문제를 접어서 해결한다는 것 외에도 필요한 순간 거네는 냅킨처럼 또는 복잡하고 어렵게만 느껴지는 모든 과정을 가장 이해하기 쉬운 방식으로 도와주는 도슨트도 있었답니다! 하지만 Core Value와 가장 잘 어울리는 접는다라고 결정을 했어요!
 
 ## 고민한 흔적 w.디자이너 수겸님
 
-![Desktop View](/assets/img/posts/2025-01-20-brand-identity-1/2025-01-20-brand-identity-1-2.png)
-![Desktop View](/assets/img/posts/2025-01-20-brand-identity-1/2025-01-20-brand-identity-1-3.png)
-![Desktop View](/assets/img/posts/2025-01-20-brand-identity-1/2025-01-20-brand-identity-1-4.png)
-![Desktop View](/assets/img/posts/2025-01-20-brand-identity-1/2025-01-20-brand-identity-1-5.png)
+![Desktop View](/assets/img/posts/2025-01-18-brand-identity-1/2025-01-18-brand-identity-1-2.png)
+![Desktop View](/assets/img/posts/2025-01-18-brand-identity-1/2025-01-18-brand-identity-1-3.png)
+![Desktop View](/assets/img/posts/2025-01-18-brand-identity-1/2025-01-18-brand-identity-1-4.png)
+![Desktop View](/assets/img/posts/2025-01-18-brand-identity-1/2025-01-18-brand-identity-1-5.png)
 
 ## Add Action
 

@@ -25,31 +25,31 @@ tags: [investment, startup, startup]
 창업 후 3년 이내 초기창업기업
 
 ### 지원내용
-![Desktop View](/assets/img/posts/2025-01-17-startup-investment-1/2025-01-17-startup-investment-1-1.png)
+![Desktop View](/assets/img/posts/2025-01-11-startup-investment-1/2025-01-11-startup-investment-1-1.png)
 
 세부적으로 확인해보자!
 
 사업화 자금 세부내용
 
-![Desktop View](/assets/img/posts/2025-01-17-startup-investment-1/2025-01-17-startup-investment-1-2.png)
-![Desktop View](/assets/img/posts/2025-01-17-startup-investment-1/2025-01-17-startup-investment-1-3.png)
-![Desktop View](/assets/img/posts/2025-01-17-startup-investment-1/2025-01-17-startup-investment-1-4.png)
+![Desktop View](/assets/img/posts/2025-01-11-startup-investment-1/2025-01-11-startup-investment-1-2.png)
+![Desktop View](/assets/img/posts/2025-01-11-startup-investment-1/2025-01-11-startup-investment-1-3.png)
+![Desktop View](/assets/img/posts/2025-01-11-startup-investment-1/2025-01-11-startup-investment-1-4.png)
 
 창업프로그램 지원 세부내용
 
-![Desktop View](/assets/img/posts/2025-01-17-startup-investment-1/2025-01-17-startup-investment-1-5.png)
+![Desktop View](/assets/img/posts/2025-01-11-startup-investment-1/2025-01-11-startup-investment-1-5.png)
 
 ### 협약기간
 협얍시작일로부터 9개월 이내
 
 ### 제출서류
-![Desktop View](/assets/img/posts/2025-01-17-startup-investment-1/2025-01-17-startup-investment-1-6.png)
+![Desktop View](/assets/img/posts/2025-01-11-startup-investment-1/2025-01-11-startup-investment-1-6.png)
 
 ### 평가 및 선정
 
 평가 절차: 총 2단계 평가 (서류 -> 발표)를 통해 최종 선정
 
-![Desktop View](/assets/img/posts/2025-01-17-startup-investment-1/2025-01-17-startup-investment-1-7.png)
+![Desktop View](/assets/img/posts/2025-01-11-startup-investment-1/2025-01-11-startup-investment-1-7.png)
 
 ### 평가 방법
 
@@ -81,7 +81,7 @@ tags: [investment, startup, startup]
 
 ### 사업계획서 작성 목차
 
-![Desktop View](/assets/img/posts/2025-01-17-startup-investment-1/2025-01-17-startup-investment-1-8.png)
+![Desktop View](/assets/img/posts/2025-01-11-startup-investment-1/2025-01-11-startup-investment-1-8.png)
 
 ## 2. 도전 K-스타트업
 
@@ -92,7 +92,7 @@ tags: [investment, startup, startup]
 참여 부처별 예선리그를 거쳐 우수 참가팀을 선발•추천하고, 통합본선과 왕중왕전 평가를 통해 최종 수상자 선정.
 
 *통합본선 단계부터는 진출팀 창업 여부(통합 공고일 기준)에 따라 예비창업리그와 창업리그로 구분하여 진행
-![Desktop View](/assets/img/posts/2025-01-17-startup-investment-1/2025-01-17-startup-investment-1-9.png)
+![Desktop View](/assets/img/posts/2025-01-11-startup-investment-1/2025-01-11-startup-investment-1-9.png)
 
 ### 참가 자격 및 제외 대상
 - 창업기업 대표자
@@ -101,7 +101,7 @@ tags: [investment, startup, startup]
 ### 대회 참가 접수 방법
 11개 예선리그 중 1개를 선택하여 참가 신청하고, 예선 리그에서 추천을 받아 통합본선 참가(진출) 가능
 
-![Desktop View](/assets/img/posts/2025-01-17-startup-investment-1/2025-01-17-startup-investment-1-10.png)
+![Desktop View](/assets/img/posts/2025-01-11-startup-investment-1/2025-01-11-startup-investment-1-10.png)
 
 우리는 혁신창업리그(중기부) 일반리그에 포함이 된다!
 
@@ -109,22 +109,22 @@ tags: [investment, startup, startup]
 
 ### 통합본선 제출 서류
 
-![Desktop View](/assets/img/posts/2025-01-17-startup-investment-1/2025-01-17-startup-investment-1-11.png)
+![Desktop View](/assets/img/posts/2025-01-11-startup-investment-1/2025-01-11-startup-investment-1-11.png)
 
 ### 예선리그 평가 방식
 
 ### 통합본선 • 왕중왕전 평가 방식
 
 평가단계별 발표평가를 통해 고득점 순으로 순위결정
-![Desktop View](/assets/img/posts/2025-01-17-startup-investment-1/2025-01-17-startup-investment-1-12.png)
+![Desktop View](/assets/img/posts/2025-01-11-startup-investment-1/2025-01-11-startup-investment-1-12.png)
 
 기술성•사업성 바탕으로 문제인식, 해결방안, 성장전략, 대표자 및 팀원의 보유역량 등을 종합적으로 평가(PSST 방식)
 
-![Desktop View](/assets/img/posts/2025-01-17-startup-investment-1/2025-01-17-startup-investment-1-13.png)
+![Desktop View](/assets/img/posts/2025-01-11-startup-investment-1/2025-01-11-startup-investment-1-13.png)
 
 ### 상금 및 상장
 
-![Desktop View](/assets/img/posts/2025-01-17-startup-investment-1/2025-01-17-startup-investment-1-14.png)
+![Desktop View](/assets/img/posts/2025-01-11-startup-investment-1/2025-01-11-startup-investment-1-14.png)
 
 [지원사업 공고](https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_000000000094235)
 
