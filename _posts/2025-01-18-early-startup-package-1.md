@@ -36,7 +36,7 @@ tags: [investment, startup]
 ### 지원내용
 사업화 자금(최대 1억원, 평균 0.7억원), 창업프로그램 등
 
-![Desktop View](/assets/img/posts/2025-01-04-early-startup-package-1/2025-01-04-early-startup-package-1-1.png){: .w-75 .center}
+![Desktop View](/assets/img/posts/2025-01-18-early-startup-package-1/2025-01-18-early-startup-package-1-1.png){: .w-75 .center}
 _지원내용_
 
 ### 협약기간
@@ -53,10 +53,10 @@ _지원내용_
 ### 지원내용
 사업화 자금 및 주관기관별 창업프로그램 등
 
-![Desktop View](/assets/img/posts/2025-01-04-early-startup-package-1/2025-01-04-early-startup-package-1-2.png){: .w-75 .center}
-![Desktop View](/assets/img/posts/2025-01-04-early-startup-package-1/2025-01-04-early-startup-package-1-3.png){: .w-75 .center}
-![Desktop View](/assets/img/posts/2025-01-04-early-startup-package-1/2025-01-04-early-startup-package-1-4.png){: .w-75 .center}
-![Desktop View](/assets/img/posts/2025-01-04-early-startup-package-1/2025-01-04-early-startup-package-1-5.png){: .w-75 .center}
+![Desktop View](/assets/img/posts/2025-01-18-early-startup-package-1/2025-01-18-early-startup-package-1-2.png){: .w-75 .center}
+![Desktop View](/assets/img/posts/2025-01-18-early-startup-package-1/2025-01-18-early-startup-package-1-3.png){: .w-75 .center}
+![Desktop View](/assets/img/posts/2025-01-18-early-startup-package-1/2025-01-18-early-startup-package-1-4.png){: .w-75 .center}
+![Desktop View](/assets/img/posts/2025-01-18-early-startup-package-1/2025-01-18-early-startup-package-1-5.png){: .w-75 .center}
 _지원내용 상세_
 
 ## 4. 신청 및 접수
@@ -78,7 +78,7 @@ K-Startup에서 누리집 온라인 신청•접수한다. K-Startup 누리집�
 ## 5. 평가 및 선정
 평가절차는 총 2단계이다. 서류 -> 발표를 통해 최종 선정한다.
 
-![Desktop View](/assets/img/posts/2025-01-04-early-startup-package-1/2025-01-04-early-startup-package-1-6.png){: .w-75 .center}
+![Desktop View](/assets/img/posts/2025-01-18-early-startup-package-1/2025-01-18-early-startup-package-1-6.png){: .w-75 .center}
 _창업기업 선정평가 절차(안)_
 
 ### 평가방법
@@ -101,10 +101,10 @@ _창업기업 선정평가 절차(안)_
 : 주관기관별 선정규모 내에서 최종 지원기업을 선정하고, 정부지원사업비를 배정하여 최종 확정 공고
 : 평가위원회에서 현장 확인이 필요하다고 판단되는 기업에 대해 주관기관 혹은 창업진흥원이 별도 현장실사를 진행할 수 있다.
 
-![Desktop View](/assets/img/posts/2025-01-04-early-startup-package-1/2025-01-04-early-startup-package-1-7.png){: .w-75 .center}
+![Desktop View](/assets/img/posts/2025-01-18-early-startup-package-1/2025-01-18-early-startup-package-1-7.png){: .w-75 .center}
 _서류평가 가점 및 면제 대상_
 
-![Desktop View](/assets/img/posts/2025-01-04-early-startup-package-1/2025-01-04-early-startup-package-1-8.png){: .w-75 .center}
+![Desktop View](/assets/img/posts/2025-01-18-early-startup-package-1/2025-01-18-early-startup-package-1-8.png){: .w-75 .center}
 _우선선정 대상_
 
 ### 평가지표
@@ -121,8 +121,8 @@ _우선선정 대상_
 
 ### 동시수행 불가한 창업지원사업 목록
 
-![Desktop View](/assets/img/posts/2025-01-04-early-startup-package-1/2025-01-04-early-startup-package-1-9.png){: .w-75 .center}
-![Desktop View](/assets/img/posts/2025-01-04-early-startup-package-1/2025-01-04-early-startup-package-1-10.png){: .w-75 .center}
+![Desktop View](/assets/img/posts/2025-01-18-early-startup-package-1/2025-01-18-early-startup-package-1-9.png){: .w-75 .center}
+![Desktop View](/assets/img/posts/2025-01-18-early-startup-package-1/2025-01-18-early-startup-package-1-10.png){: .w-75 .center}
 _동시수행 불가한 창업지원사업 목록_
 
 ## Add Action
