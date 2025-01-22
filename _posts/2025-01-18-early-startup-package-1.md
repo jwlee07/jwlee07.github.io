@@ -134,4 +134,5 @@ _동시수행 불가한 창업지원사업 목록_
 ## 참고
 
 [창업진흥원 - 초기창업패키지](https://www.kised.or.kr/menu.es?mid=a10205020000)
+
 [기업마당 - 2024년 초기창업패키지 창업기업 모집 공고](https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_000000000094267)
