@@ -4,6 +4,14 @@ categories: [투자유치, 초기창업패키지]
 tags: [investment, startup]
 ---
 
+> 관련글
+>
+> [[투자유치] 초기창업패키지 도전하기 - 1](https://jwlee07.github.io/posts/early-startup-package-1/)
+> 
+> [[투자유치] 초기창업패키지 도전하기 - 2](https://jwlee07.github.io/posts/early-startup-package-2/)
+> 
+> [[투자유치] 초기창업패키지 도전하기 - 3](https://jwlee07.github.io/posts/early-startup-package-3/)
+
 가슴이 설레이는 블로그의 첫 글이네요.
 이 글을 시작으로 나의 커리어의 발자취들이 모여 하나의 브랜드로 만들어질 수 있었으면 좋겠어요.
 

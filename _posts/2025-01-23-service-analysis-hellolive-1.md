@@ -1,5 +1,5 @@
 ---
-title: "[서비스 분석] 헬로라이브 서비스 분석 - 1"
+title: "[서비스 분석] 헬로라이브 서비스 분석"
 categories: [서비스 분석, 헬로라이브]
 tags: [service analysis]
 ---

@@ -1,5 +1,5 @@
 ---
-title: "[채용] 디자이너와 개발자 채용 - 1"
+title: "[채용] 플랫폼사업 인력 채용 - 1"
 categories: [채용]
 tags: [recruit]
 ---
