@@ -154,9 +154,7 @@ tags: [investment, startup]
 여기까지 읽으시느라 고생 많으셨어요.
 
 ## Add Action
-사업계획서 문제인식(Problem), 실현가능성(Solution), 성장전략(Scale-up), 기업 구성(Team) 각각의 작성법에 대해 알아볼게요.
-
-항목별로 자세하게 작성법을 다뤄볼게요!
+사업계획서 문제인식(Problem), 실현가능성(Solution), 성장전략(Scale-up), 기업 구성(Team) 각각에 대해 작성해볼게요.
 
 ## 참고
 
