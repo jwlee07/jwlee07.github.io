@@ -162,8 +162,10 @@ tags: [investment, startup]
 심사위원이 가장 먼저 읽는 부분이에요. 핵심 메세지를 명확하고 간결하게 전달하는 것이 좋아요.
 
 ## Add Action
-여기까지 사업계획서의 작성 항목에 대해 살펴봤어요. 다음 글에서는 사업계획서의 본문 작성 방법을 알아볼게요.(w)
+여기까지 사업계획서의 작성 항목에 대해 살펴봤어요. 다음 글에서는 사업계획서의 본문 작성 방법을 알아볼게요.
 
 ## 참고
 
 [2024년도 초기창업패키지 창업기업 모집 공고](https://www.k-startup.go.kr/web/contents/bizpbanc-deadline.do?schM=view&pbancSn=167489)
+
+`END`
